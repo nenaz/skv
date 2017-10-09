@@ -1,0 +1,27 @@
+{
+  "name": "conv",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14"
+  },
+  "scripts": {
+    "start": "npm run build-css && run-p -ncr watch-css start-js",
+    "start-js": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-less-chokidar src/less -o src/css",
+    "watch-css": "node-less-chokidar src --watch"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.7",
+    "less": "^3.0.0-alpha.3",
+    "less-loader": "^4.0.5",
+    "node-less-chokidar": "^0.1.2",
+    "npm-run-all": "^4.1.1",
+    "style-loader": "^0.19.0"
+  }
+}
