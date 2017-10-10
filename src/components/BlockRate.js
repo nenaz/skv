@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../less/App.css';
+import '../css/App.css';
 
 export default class BlockRate extends Component {
 
