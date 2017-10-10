@@ -1,24 +1,34 @@
 import React from 'react'
 import styles from '../css/TableRatesBlock.css'
+import LineRatesHeaderBlock from './LineRatesHeaderBlock'
 
 const TableRatesBlock = (props) => {
+    const arrHead = [{str:'Курсы валют*'}, {str:'Купить'}, {str:'Продать'}]
+    const arrLine1 = [{
+            str:'Доллар',
+            spanClassName: 'ccCurImg currencyImg usd icon-usd'
+        }, {
+            str:'',
+            liClassName: 'bgc-rgba usd sell',
+        }, {
+            str:'',
+            liClassName: 'bgc-rgba usd buy'
+        }]
+    const arrLine2 = [{
+            str:'Евро',
+            spanClassName: 'ccCurImg currencyImg eur icon-eur'
+        }, {
+            str:'',
+            liClassName: 'bgc-rgba eur sell',
+        }, {
+            str:'',
+            liClassName: 'bgc-rgba eur buy'
+        }]
     return (
         <div id={styles["currency-rates-table"]}>
-            <ul className={[styles.columns, styles["_3"], styles.header]}>
-                <li>Курсы валют*</li>
-                <li>Купить</li>
-                <li>Продать</li>
-            </ul>
-            <ul className={[styles.columns, styles['_3'], styles['usd-group']]}>
-                <li><span className="ccCurImg currencyImg usd icon-usd">Доллар</span></li>
-                <li curr="usd" typerate="sell" className="bgc-rgba usd-sell ">59,490</li>
-                <li curr="usd" typerate="buy" className="bgc-rgba usd-buy ">56,212</li>
-            </ul>
-            <ul className={[styles.columns, styles['_3'], styles['eur-group']]}>
-                <li><span className="ccCurImg currencyImg eur icon-eur">Евро</span></li>
-                <li curr="eur" typerate="sell" className="bgc-rgba eur-sell ">58,702</li>
-                <li curr="eur" typerate="buy" className="bgc-rgba eur-buy ">57,303</li>
-            </ul>
+            <LineRatesHeaderBlock nameClass="header" dataArr={arrHead}/>
+            <LineRatesHeaderBlock nameClass="usd-group" dataArr={arrLine1}/>
+            <LineRatesHeaderBlock nameClass="eur-group" dataArr={arrLine2}/>
         </div>
     )
 }
