@@ -19,7 +19,7 @@ class App extends Component {
     this.handleClickGetRate = this.handleClickGetRate.bind(this)
   }
 
-  handleClickGetRate() {
+  handleClickGetRate(str) {
     console.log('handleClickGetRate')
     var testClientId = "2041234";
     var arr = [];
@@ -30,9 +30,18 @@ class App extends Component {
         s: 10000,
         cur: 'RUB'
     };
-    arr[0] = 'GetRate';
+    arr[0] = str;
     arr[1] = obj;
     this.ws.send(JSON.stringify(arr));
+  }
+
+  intervel = 0
+
+  startGetRatesFromServer() {
+    const me = this;
+    me.intervel = setInterval(() => {
+      me.handleClickGetRate('GetRate');
+    }, 5000)
   }
 
   componentDidMount() {
@@ -41,7 +50,7 @@ class App extends Component {
     this.ws.onmessage = e => this.setState({ rates: Object.values(JSON.parse(e.data)) })
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
     this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
-    // this.handleClickGetRate();
+    this.startGetRatesFromServer();
   }
 
   componentWillUnmount() {
