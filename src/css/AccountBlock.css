@@ -1,0 +1,26 @@
+/*.dpSidebarAccountsList{
+        .dpNoNameOrganisation{
+            height: 100%;
+            padding: 20px 12px 14px 24.5px;
+            
+        }
+}
+*/
+.dpSidebarAccountSumm {
+  font-size: 24px;
+  font-weight: 300;
+  color: #2c2c2c;
+  line-height: 24px;
+  font-size: 45px;
+  text-align: center;
+}
+.dpSidebarAccountNumber {
+  color: #767676;
+  font-family: 'whitney-light';
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 11px;
+  text-align: center;
+  width: 100%;
+}
