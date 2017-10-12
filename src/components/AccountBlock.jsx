@@ -3,6 +3,7 @@ import styles from '../css/AccountBlock.css'
 
 export default class AccountBlock extends Component {
     render() {
+        console.log('render Account block')
         return (
             <div className={styles.dpNoNameOrganisation}>
                 <div className={styles.dpSidebarAccountSumm}>100 345 345<small > 09 </small></div>
