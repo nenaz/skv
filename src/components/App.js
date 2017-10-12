@@ -7,6 +7,7 @@ import CustomInput from './CustomInput'
 import CustomInfoBlock from './CustomInfoBlock'
 import CustomButton from './CustomButton'
 import SelectAccountList from './SelectAccountList'
+import Utils from '../js/utils'
 
 class App extends Component {
   constructor(props) {
@@ -18,21 +19,41 @@ class App extends Component {
       rates: {},
       accounts: {},
       connection: false
-    };
+    }
+
+    this.handleClickGetRate = this.handleClickGetRate.bind(this)
   }
 
   componentWillMount() {
-    console.log('componentWillMount app')
+    // console.log('componentWillMount app')
     this.ws = new WebSocket('ws://10.255.14.131:8099', 'echo-protocol')
-    // this.ws.onmessage = e => this.setState({ rates: Object.values(JSON.parse(e.data)) })
-    // this.ws.onmessage = e => this.wsOnMessageEvent(JSON.parse(e.data))
+    this.ws.onopen = e => this.getStartDataFromServer()
+    this.ws.onmessage = e => this.wsOnMessageEvent(JSON.parse(e.data))
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
     this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
-    
+  }
+
+  getStartDataFromServer() {
+    this.handleClickGetRate('GetRate')
+    this.handleClickGetRate('GetAccounts', {client: '2041111'})
+  }
+
+  wsOnMessageEvent(data) {
+      switch (data[0]) {
+        case 'GetRate': this.setState({ rates: data[1] })
+          break
+        case 'Accounts': this.setState({ accounts: data[1].accounts })
+          break
+        default: console.log('default')
+      }
+  }
+
+  handleClickGetRate(str, obj = {}) {
+      this.ws.send(JSON.stringify(Utils.handleClickGetRate(str, obj)));
   }
 
   componentDidMount() {
-    console.log('componentDidMount App')
+    // console.log('componentDidMount App')
   }
 
   componentWillUnmount() {
@@ -40,17 +61,17 @@ class App extends Component {
   }
 
   render() {
-    // console.log('render app')
+    console.log('render app')
     return (
       <div>
-        <TableRatesBlock ws={this.ws}/>
+        <TableRatesBlock {...this.state}/>
         <AccountFromBlock />
         <AccountToBlock />
         <SelectCurrencyBlock />
         <CustomInput />
         <CustomInfoBlock />
         <CustomButton />
-        <SelectAccountList ws={this.ws}/>
+        <SelectAccountList {...this.state}/>
         <input type="button" value="GetRate" onClick={this.handleClickGetRate}/>
       </div>
     );
