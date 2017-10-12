@@ -6,7 +6,7 @@ const account2format = function(account, separator) {
 
     // if (acc.length === 5) throw 'incorrect account';
     var result = [];
-    range.each(function (val) {
+    range.forEach(function (val) {
         result.push(acc.splice(0, val).join(''));
     });
     return result.join(separator || '&thinsp;&thinsp;');

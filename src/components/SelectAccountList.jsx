@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import utils from '../js/utils'
+import SelectAccountHeader from './SelectAccountHeader'
+import SelectAccountBody from './SelectAccountBody'
 
 export default class SelectAccountList extends Component {
     constructor(props) {
@@ -37,31 +38,10 @@ export default class SelectAccountList extends Component {
 
     render() {
         console.log('render list')
-        // console.log(this.state)
         return (
             <div className="dpSidebar dpToggledBlock ccAccountAnimationIn">
-                    <div className="sbFilterBody ccFilterNew">
-                    <div className="ccFilterNewTitle">
-                        <div className="ccHeaderTitleBlock">
-                            <span className="ccCancelBtn" action="close-filter">Отменить</span>
-                            <span className="ccFilterHeaderTitle">Со счета</span>
-                        </div>
-                    </div>
-                    <div className="sbFilterSubHeader sbFilterSubHeaderTop ccFilterAccountTitle">
-                        <span>ЗАО "Пропан-трейдинг"</span>
-                    </div>
-                    <ul className="sbFilterOrg" id="ccAccountsCompaniesSelect">
-                        {/* {this.state.accontsList.map((item, key) => {
-                            return (
-                                <li data-acct={item.id} action="acct-select" key={key}>
-                                    {utils.account2format(item.id, ' ')}
-                                    <span className="WL">USD</span>
-                                    <span className="sbFilterOrgAmount">328 363<small className="USD"> 64 </small></span>
-                                </li>
-                            )
-                        })} */}
-                    </ul>
-                </div>
+                <SelectAccountHeader />
+                <SelectAccountBody {...this.props}/>
             </div>
         )
     }

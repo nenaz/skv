@@ -17,8 +17,9 @@ class App extends Component {
       users: [],
       error: null,
       rates: {},
-      accounts: {},
-      connection: false
+      // accontsList: {},
+      connection: false,
+      val: ''
     }
 
     this.handleClickGetRate = this.handleClickGetRate.bind(this)
@@ -26,7 +27,8 @@ class App extends Component {
 
   componentWillMount() {
     // console.log('componentWillMount app')
-    this.ws = new WebSocket('ws://10.255.14.131:8099', 'echo-protocol')
+    // this.ws = new WebSocket('ws://10.255.14.131:8099', 'echo-protocol')
+    this.ws = new WebSocket('ws://localhost:8099', 'echo-protocol')
     this.ws.onopen = e => this.getStartDataFromServer()
     this.ws.onmessage = e => this.wsOnMessageEvent(JSON.parse(e.data))
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
@@ -34,15 +36,20 @@ class App extends Component {
   }
 
   getStartDataFromServer() {
-    this.handleClickGetRate('GetRate')
-    this.handleClickGetRate('GetAccounts', {client: '2041111'})
+    const me = this
+    me.handleClickGetRate('GetAccounts', {client: '2041111'})
+    me.handleClickGetRate('GetRate')
+    // setTimeout(() => {
+      
+    // }, 3000)
   }
 
   wsOnMessageEvent(data) {
+    console.log('data[0] = '+data[0])
       switch (data[0]) {
         case 'GetRate': this.setState({ rates: data[1] })
           break
-        case 'Accounts': this.setState({ accounts: data[1].accounts })
+        case 'Accounts': this.setState({ accontsList: data[1].accounts })
           break
         default: console.log('default')
       }
@@ -53,7 +60,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // console.log('componentDidMount App')
+    const me = this
+    me.intervalId = setInterval(() => {
+      me.handleClickGetRate('GetRate')
+    }, 5000)
   }
 
   componentWillUnmount() {
@@ -71,8 +81,10 @@ class App extends Component {
         <CustomInput />
         <CustomInfoBlock />
         <CustomButton />
+
         <SelectAccountList {...this.state}/>
         <input type="button" value="GetRate" onClick={this.handleClickGetRate}/>
+        <div>{this.state.val}</div>
       </div>
     );
   }
