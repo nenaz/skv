@@ -1,0 +1,64 @@
+.ccFilterNewTitle {
+  width: 100%;
+}
+.ccFilterNewTitle .ccHeaderTitleBlock {
+  padding: 40px 12px 0px 12px;
+  background-image: url(../img/bg_6.jpg);
+  padding-bottom: 12px;
+  color: white;
+}
+.ccFilterNewTitle .ccHeaderTitleBlock .ccCancelBtn {
+  display: inline-block;
+  width: 40%;
+  font-family: 'whitney-light';
+}
+.ccFilterNewTitle .ccHeaderTitleBlock .ccFilterHeaderTitle {
+  font-size: 18px;
+  display: inline-block;
+}
+.ccFilterAccountTitle {
+  font-size: 17px;
+  background-color: #f0f0f0;
+  padding: 16px 25px 3.5px;
+  border-bottom: 1px solid #d9d9d9;
+  color: #666666;
+  border-width: 1px 0 1px 0;
+  height: 20px;
+}
+.sbFilterOrg {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  background-color: #ffffff;
+  font-size: 19px;
+  padding-left: 20px;
+  line-height: 25px;
+  transition: all 260ms ease-in-out;
+  overflow: hidden;
+  overflow-y: scroll;
+  transform: scaleY(1);
+  opacity: 1;
+  transform-origin: 50% 0;
+}
+.sbFilterOrg li {
+  line-height: 25px;
+  font-size: 19px;
+  color: #58595b;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+.sbFilterOrg li .sbFilterOrgAmount {
+  color: #a7a9ac;
+  font-size: 15px;
+  display: block;
+  font-family: 'whitney-light';
+}
+.sbFilterOrg li::before {
+  content: '';
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  border-bottom: 1px solid #d0dce4;
+}

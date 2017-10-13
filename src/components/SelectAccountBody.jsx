@@ -1,10 +1,11 @@
 import React from 'react'
 import utils from '../js/utils'
+import styles from '../css/SelectAccountList.css'
 
 const SelectAccountBody = (props) => {
     if (props.accountList) {
         return (
-            <ul className="sbFilterOrg" id="ccAccountsCompaniesSelect">
+            <ul className={styles.sbFilterOrg} id="ccAccountsCompaniesSelect">
                 {props.accountList.map((item, key) => {
                     return (
                         <li data-acct={item.id} action="acct-select" key={key}>

@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from '../css/CustomButton.css'
 
 const CustomButton = (props) => {
     return (
-        <span className="ccMainTab" action="">Продолжить</span>
+        <span className={styles.ccMainTab} action="">Продолжить</span>
     )
 }
 

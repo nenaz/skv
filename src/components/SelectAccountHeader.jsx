@@ -1,15 +1,16 @@
 import React from 'react'
+import styles from '../css/SelectAccountList.css'
 
 const SelectAccountHeader = (props) => {
     return (
-        <div className="sbFilterBody ccFilterNew">
-            <div className="ccFilterNewTitle">
-                <div className="ccHeaderTitleBlock">
-                    <span className="ccCancelBtn" action="close-filter">Отменить</span>
-                    <span className="ccFilterHeaderTitle">Со счета</span>
+        <div className={styles.ccFilterNew}>
+            <div className={styles.ccFilterNewTitle}>
+                <div className={styles.ccHeaderTitleBlock}>
+                    <span className={styles.ccCancelBtn} action="close-filter">Отменить</span>
+                    <span className={styles.ccFilterHeaderTitle}>Со счета</span>
                 </div>
             </div>
-            <div className="sbFilterSubHeader sbFilterSubHeaderTop ccFilterAccountTitle">
+            <div className={styles.ccFilterAccountTitle}>
                 <span>ЗАО "Пропан-трейдинг"</span>
             </div>
         </div>
