@@ -5,19 +5,16 @@ import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock/SelectCurrencyBl
 import CustomInput from './CustomInput'
 import CustomInfoBlock from './CustomInfoBlock'
 import CustomButton from './CustomButton'
-import SelectAccountList from './SelectAccountList'
+import SelectAccountList from './SelectAccounts/SelectAccountList'
 import Utils from '../js/utils'
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 90,
       users: [],
       error: null,
-      // rates: {},
-      connection: false,
-      val: ''
+      connection: false
     }
 
     this.handleClickGetRate = this.handleClickGetRate.bind(this)
@@ -76,10 +73,7 @@ class App extends Component {
           <CustomInput />
           <CustomInfoBlock />
           <CustomButton />
-
           <SelectAccountList {...this.state}/>
-          <input type="button" value="GetRate" onClick={this.handleClickGetRate}/>
-          <div>{this.state.val}</div>
         </div>
       )
     } else {

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../css/SelectAccountList.css'
+import styles from '../../css/SelectAccountList.css'
 
 const SelectAccountHeader = (props) => {
     return (
