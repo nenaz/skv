@@ -100,7 +100,7 @@ const currencyTable = [];
 currencyTable.push({
     name: 'Рубли',
     declension: 'рублях',
-    number: 643,
+    number: 810,
     alpha: 'RUB',
     alt_alphas: ['RUR', 'РУБ'],
     symbol: '₽',

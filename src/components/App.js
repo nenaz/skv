@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AccountFromToSelectBlock from './AccountFromToSelectBlock'
 import TableRatesBlock from './TableRatesBlock'
-import SelectCurrencyBlock from './SelectCurrencyBlock'
+import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock/SelectCurrencyBlock'
 import CustomInput from './CustomInput'
 import CustomInfoBlock from './CustomInfoBlock'
 import CustomButton from './CustomButton'
