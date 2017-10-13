@@ -1,3 +1,4 @@
+import _ from 'underscore'
 
 const account2format = function(account, separator) {
     // 40817 840 9 0023 1234567
@@ -152,19 +153,43 @@ currencyTable.push({
 });
 
 const findCurrency = function(currency) {
-    var index = currencyTable.each(function (value) {
+    var index = _.findIndex(currencyTable, function(value) {
         return value.number === currency || value.alpha === currency || (value.alt_alphas && value.alt_alphas.indexOf(currency) >= 0);
     });
 
     return index > -1 && currencyTable[index];
 };
 
+const initialValueForAccounts = (accounts) => {
+    let accountsFrom = [], 
+        accountsTo = []
+    if (accounts && accounts.length) {
+        accounts.forEach((item) => {
+            if (item.id.substr(5,3) === '840') {
+                accountsFrom.push(item)
+            } else {
+                accountsTo.push(item)
+            }
+        })
+        return {
+            accountsFrom: accountsFrom,
+            accountFrom: accountsFrom[0],
+            accountsTo: accountsTo,
+            accountTo: accountsTo[0]
+        }
+    } else {
+        return null
+    }
+}
+
+
 var utils = {
     account2format: account2format,
     handleClickGetRate: handleClickGetRate,
     currencyHTML: currencyHTML,
     num2format: num2format,
-    toDigits: toDigits
+    toDigits: toDigits,
+    initialValueForAccounts: initialValueForAccounts
 }
 
 export default utils

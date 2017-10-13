@@ -3,7 +3,7 @@ import React from 'react'
 
 const Span = (props) => {
     return (
-        <span className={props.listClassName}>Доллар</span>
+        <span className={props.listClassName}>{props.currencyName}</span>
     )
 }
 

@@ -5,8 +5,8 @@ import AccountBlock from './AccountBlock'
 const AccountFromBlock = (props) => {
     return (
         <div>
-            <HeadTitle title="Списать со счета"/>
-            <AccountBlock />
+            <HeadTitle title={props.title}/>
+            <AccountBlock account={props.account}/>
         </div>
     )
 }

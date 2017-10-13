@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import AccountFromBlock from './AccountFromBlock'
-import AccountToBlock from './AccountToBlock'
+import AccountFromToSelectBlock from './AccountFromToSelectBlock'
 import TableRatesBlock from './TableRatesBlock'
 import SelectCurrencyBlock from './SelectCurrencyBlock'
 import CustomInput from './CustomInput'
@@ -16,8 +15,7 @@ class App extends Component {
       count: 90,
       users: [],
       error: null,
-      rates: {},
-      // accontsList: {},
+      // rates: {},
       connection: false,
       val: ''
     }
@@ -26,7 +24,6 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // console.log('componentWillMount app')
     // this.ws = new WebSocket('ws://10.255.14.131:8099', 'echo-protocol')
     this.ws = new WebSocket('ws://localhost:8099', 'echo-protocol')
     this.ws.onopen = e => this.getStartDataFromServer()
@@ -39,9 +36,6 @@ class App extends Component {
     const me = this
     me.handleClickGetRate('GetAccounts', {client: '2041111'})
     me.handleClickGetRate('GetRate')
-    // setTimeout(() => {
-      
-    // }, 3000)
   }
 
   wsOnMessageEvent(data) {
@@ -49,7 +43,7 @@ class App extends Component {
       switch (data[0]) {
         case 'GetRate': this.setState({ rates: data[1] })
           break
-        case 'Accounts': this.setState({ accontsList: data[1].accounts })
+        case 'Accounts': this.setState({ accountList: data[1].accounts })
           break
         default: console.log('default')
       }
@@ -68,26 +62,30 @@ class App extends Component {
 
   componentWillUnmount() {
     this.ws.close()
+    clearInterval(this.intervalId)
   }
 
   render() {
     console.log('render app')
-    return (
-      <div>
-        <TableRatesBlock {...this.state}/>
-        <AccountFromBlock />
-        <AccountToBlock />
-        <SelectCurrencyBlock />
-        <CustomInput />
-        <CustomInfoBlock />
-        <CustomButton />
+    if (this.state.accountList && this.state.rates) {
+      return (
+        <div>
+          <TableRatesBlock {...this.state}/>
+          <AccountFromToSelectBlock accountList={this.state.accountList}/>
+          <SelectCurrencyBlock />
+          <CustomInput />
+          <CustomInfoBlock />
+          <CustomButton />
 
-        <SelectAccountList {...this.state}/>
-        <input type="button" value="GetRate" onClick={this.handleClickGetRate}/>
-        <div>{this.state.val}</div>
-      </div>
-    );
+          <SelectAccountList {...this.state}/>
+          <input type="button" value="GetRate" onClick={this.handleClickGetRate}/>
+          <div>{this.state.val}</div>
+        </div>
+      )
+    } else {
+      return <div>Loading ...</div>
+    }
   }
 }
 
-export default App;
+export default App

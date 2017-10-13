@@ -2,10 +2,10 @@ import React from 'react'
 import utils from '../js/utils'
 
 const SelectAccountBody = (props) => {
-    if (props.accontsList) {
+    if (props.accountList) {
         return (
             <ul className="sbFilterOrg" id="ccAccountsCompaniesSelect">
-                {props.accontsList.map((item, key) => {
+                {props.accountList.map((item, key) => {
                     return (
                         <li data-acct={item.id} action="acct-select" key={key}>
                             {utils.account2format(item.id, ' ')}

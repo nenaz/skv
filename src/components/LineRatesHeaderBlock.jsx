@@ -6,7 +6,7 @@ const LineRatesHeaderBlock = (props) => {
     return (
         <ul className={[styles.columns, styles["_3"], props.nameClass]}>
             {props.dataArr.map((item, i) => {
-                let content = (item.spanClassName) ? <Span arrClassName={item.spanClassName} /> : item.str
+                let content = (item.spanClassName) ? <Span arrClassName={item.spanClassName} currencyName={item.str} /> : item.str
                 let liCLass = (item.liClassName) ? item.liClassName : ''
                 return <li className={liCLass} key={i}>{content}</li>
             })}
