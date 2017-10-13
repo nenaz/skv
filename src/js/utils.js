@@ -165,7 +165,7 @@ const initialValueForAccounts = (accounts) => {
         accountsTo = []
     if (accounts && accounts.length) {
         accounts.forEach((item) => {
-            if (item.id.substr(5,3) === '840') {
+            if (item.id.substr(5,3) === '810') {
                 accountsFrom.push(item)
             } else {
                 accountsTo.push(item)
