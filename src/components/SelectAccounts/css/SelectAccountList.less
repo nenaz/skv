@@ -1,6 +1,11 @@
 .ccSelectAccountList{
-    transform: translateY(100vh);
     transition: transform 400ms ease;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    &.goDown100{
+        transform: translateY(100vh);
+    }
 }
 .ccFilterNewTitle{
     width: 100%;

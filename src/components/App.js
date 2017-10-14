@@ -7,6 +7,7 @@ import CustomInfoBlock from './CustomInfoBlock'
 import CustomButton from './CustomButton'
 import SelectAccountList from './SelectAccounts/SelectAccountList'
 import Utils from '../js/utils'
+import styles from '../css/App.css'
 
 class App extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class App extends Component {
     console.log('render app')
     if (this.state.accountList && this.state.rates) {
       return (
-        <div>
+        <div className={styles.appElem}>
           <TableRatesBlock {...this.state}/>
           <AccountFromToSelectBlock accountList={this.state.accountList}/>
           <SelectCurrencyBlock />

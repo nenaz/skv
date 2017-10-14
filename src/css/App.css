@@ -4,6 +4,7 @@
   height: 30px;
   background-color: red;
 }
-#root{
-  overflow: hidden
+.appElem{
+  overflow: hidden;
+  height: 740px;
 }

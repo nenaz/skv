@@ -14,7 +14,7 @@ export default class SelectAccountList extends Component {
     render() {
         console.log('render list')
         return (
-            <div className={styles.ccSelectAccountList}>
+            <div className={`${styles.ccSelectAccountList} ${styles.goDown100}`}>
                 <SelectAccountHeader />
                 <SelectAccountBody {...this.props}/>
             </div>
