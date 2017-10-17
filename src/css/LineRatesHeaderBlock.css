@@ -1,3 +1,13 @@
-.columns {
-  background-color: red;
+.columns ._3.bgc-rgba:nth-child(2n),
+.columns ._3.bgc-rgba:nth-child(2n+1) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.columns ._3.bgc-rgba:nth-child(2n) {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-right: -1px;
+}
+.columns ._3.bgc-rgba:nth-child(2n+1) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }

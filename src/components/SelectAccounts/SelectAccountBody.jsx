@@ -6,7 +6,7 @@ export default class SelectAccountBody extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            
+
         }
     }
 
@@ -15,11 +15,13 @@ export default class SelectAccountBody extends Component {
             return (
                 <ul className={styles.sbFilterOrg} id="ccAccountsCompaniesSelect">
                     {this.props.accountList.map((item, key) => {
+                        let currency = +(item.id).substr(5, 3)
+                        let amount = {__html: utils.currencyHTML(item.sum, currency)}            
                         return (
-                            <li data-acct={item.id} action="acct-select" key={key}>
+                            <li data-acct={item.id} action="acct-select" key={key} onClick={this.props.selectAccount}>
                                 {utils.account2format(item.id, ' ')}
                                 <span className="WL">USD</span>
-                                <span className="sbFilterOrgAmount">328 363<small className="USD"> 64 </small></span>
+                                <span className="sbFilterOrgAmount" dangerouslySetInnerHTML={amount}></span>
                             </li>
                         )
                     })}

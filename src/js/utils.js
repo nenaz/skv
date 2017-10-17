@@ -160,6 +160,20 @@ const findCurrency = function(currency) {
     return index > -1 && currencyTable[index];
 };
 
+const findAcctObject = (accounts, account) => {
+    // let arr = _.filter(account, (item) => {
+    //     return item.id === account
+    // })
+    // return arr[0]
+    let arr = [];
+    accounts.forEach((item) => {
+        if (item.id === account) {
+            arr.push(item)
+        }
+    })
+    return arr[0]
+}
+
 const initialValueForAccounts = (accounts) => {
     let accountsFrom = [], 
         accountsTo = []
@@ -189,7 +203,8 @@ var utils = {
     currencyHTML: currencyHTML,
     num2format: num2format,
     toDigits: toDigits,
-    initialValueForAccounts: initialValueForAccounts
+    initialValueForAccounts: initialValueForAccounts,
+    findAcctObject: findAcctObject
 }
 
 export default utils

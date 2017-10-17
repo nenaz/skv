@@ -8,8 +8,6 @@ export default class AccountBlock extends Component {
         this.state = {}
     }
     render() {
-        console.log('render Account block')
-        console.log(this.props)
         let currency = +(this.props.account.id).substr(5, 3)
         let amount = {__html: Utils.currencyHTML(this.props.account.sum, currency)}
         let account = {__html: Utils.account2format(this.props.account.id)}
