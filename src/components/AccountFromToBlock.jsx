@@ -4,7 +4,7 @@ import AccountBlock from './AccountBlock'
 
 const AccountFromBlock = (props) => {
     return (
-        <div>
+        <div onClick={props.handleFilterToggle}>
             <HeadTitle title={props.title}/>
             <AccountBlock account={props.account}/>
         </div>

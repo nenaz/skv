@@ -5,7 +5,6 @@ import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock/SelectCurrencyBl
 import CustomInput from './CustomInput'
 import CustomInfoBlock from './CustomInfoBlock'
 import CustomButton from './CustomButton'
-import SelectAccountList from './SelectAccounts/SelectAccountList'
 import Utils from '../js/utils'
 import styles from '../css/App.css'
 
@@ -74,7 +73,6 @@ class App extends Component {
           <CustomInput />
           <CustomInfoBlock />
           <CustomButton />
-          <SelectAccountList {...this.state}/>
         </div>
       )
     } else {

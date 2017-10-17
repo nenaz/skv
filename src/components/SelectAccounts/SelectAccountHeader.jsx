@@ -6,7 +6,7 @@ const SelectAccountHeader = (props) => {
         <div className={styles.ccFilterNew}>
             <div className={styles.ccFilterNewTitle}>
                 <div className={styles.ccHeaderTitleBlock}>
-                    <span className={styles.ccCancelBtn} action="close-filter">Отменить</span>
+                    <span className={styles.ccCancelBtn} action="close-filter" onClick={props.handleFilterToggle}>Отменить</span>
                     <span className={styles.ccFilterHeaderTitle}>Со счета</span>
                 </div>
             </div>
