@@ -4,7 +4,7 @@ import styles from '../../css/SelectCurrencyBlock.css'
 
 const SelectCurrencyBlock = (props) => {
     return (
-        <div>
+        <div className={styles['parrentBlock']}>
             <HeadTitle title="Валюта и сумма операции" />
             <div className={styles.dpTabButtons}>
                 <div className={`${styles.button} ${styles.selected} ${styles.left}`} data-curr="rub" >Рубли</div>

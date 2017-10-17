@@ -12,6 +12,12 @@ export default class TableRatesBlock extends Component {
     }
 
     render () {
+        const tableStrConst = {
+            type_sell: 'sell',
+            type_buy: 'buy',
+            group: '_3',
+            groupColor: 'bgc-rgba'
+        }
         if (this.props.rates) {
             const arrHead = [{str:'Курсы валют*'}, {str:'Купить'}, {str:'Продать'}]
             const arrLine1 = [{
@@ -19,28 +25,28 @@ export default class TableRatesBlock extends Component {
                     spanClassName: 'ccCurImg currencyImg usd icon-usd'
                 }, {
                     str: (this.props.rates[1]) ? this.props.rates['0']['a'] : '',
-                    classType: 'sell',
-                    classGroup: '_3',
-                    classGroupColor: 'bgc-rgba'
+                    classType: tableStrConst.type_sell,
+                    classGroup: tableStrConst.group,
+                    classGroupColor: tableStrConst.groupColor
                 }, {
                     str: (this.props.rates[1]) ? this.props.rates['0']['b'] : '',
-                    classType: 'buy',
-                    classGroup: '_3',
-                    classGroupColor: 'bgc-rgba'
+                    classType: tableStrConst.type_buy,
+                    classGroup: tableStrConst.group,
+                    classGroupColor: tableStrConst.groupColor
                 }]
             const arrLine2 = [{
                     str:'Евро',
                     spanClassName: 'ccCurImg currencyImg eur icon-eur'
                 }, {
                     str: (this.props.rates[1]) ? this.props.rates['1']['a'] : '',
-                    classType: 'sell',
-                    classGroup: '_3',
-                    classGroupColor: 'bgc-rgba'
+                    classType: tableStrConst.type_sell,
+                    classGroup: tableStrConst.group,
+                    classGroupColor: tableStrConst.groupColor
                 }, {
                     str: (this.props.rates[1]) ? this.props.rates['1']['b'] : '',
-                    classType: 'buy',
-                    classGroup: '_3',
-                    classGroupColor: 'bgc-rgba'
+                    classType: tableStrConst.type_buy,
+                    classGroup: tableStrConst.group,
+                    classGroupColor: tableStrConst.groupColor
                 }]
             return (
                 <div id={styles["currency-rates-table"]}>
