@@ -1,18 +1,11 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import store from '../store'
 
 class Counter extends Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {}
 
-    //     this.handleIncrement = this.handleIncrement(this)
-    // }
-
-    handleIncrement() {
+    handleIncrement = () => {
         console.log('incrementing')
-        store.dispatch({
+        this.props.dispatch({
             type: 'INCREMENT'
         })
     }
