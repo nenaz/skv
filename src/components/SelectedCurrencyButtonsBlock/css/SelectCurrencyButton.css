@@ -1,15 +1,4 @@
-.parrentBlock {
-  background-color: #f0f0f0;
-}
-.parrentBlock h3 {
-  border-bottom: 0px solid;
-}
-.parrentBlock .dpTabButtons {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 15px;
-}
-.parrentBlock .dpTabButtons .button {
+.button {
   font-size: 16px;
   height: 38px;
   line-height: 38px;
@@ -23,16 +12,16 @@
   width: 50%;
   border-color: #0072bc;
 }
-.parrentBlock .dpTabButtons .button.left {
+.button.left {
   border-radius: 5px 0 0 5px;
   border-right: none;
   float: left;
 }
-.parrentBlock .dpTabButtons .button.right {
+.button.right {
   border-left: none;
   border-radius: 0 5px 5px 0;
 }
-.parrentBlock .dpTabButtons .button.selected {
+.button.selected {
   background-color: #0072bc;
   color: #ffffff;
   cursor: default;

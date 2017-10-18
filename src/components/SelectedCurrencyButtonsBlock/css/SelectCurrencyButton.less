@@ -1,0 +1,28 @@
+.button{
+    font-size: 16px;
+    height: 38px;
+    line-height: 38px;
+    border: 1px solid transparent;
+    text-align: center;
+    list-style: none;
+    display: inline-block;
+    vertical-align: middle;
+    box-sizing: border-box;
+    transition: background-color 150ms linear, color 150ms linear;
+    width: 50%;
+    border-color: #0072bc;
+    &.left{
+        border-radius: 5px 0 0 5px;
+        border-right: none;
+        float: left;
+    }
+    &.right{
+        border-left: none;
+        border-radius: 0 5px 5px 0;
+    }
+    &.selected{
+        background-color: #0072bc;
+        color: #ffffff;
+        cursor: default;
+    }
+}
