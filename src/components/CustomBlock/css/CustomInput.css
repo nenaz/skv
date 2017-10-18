@@ -2,7 +2,7 @@
   flex-shrink: 0;
   width: 100%;
   height: 60px;
-  position: relative;
+  /*position: relative;*/
   display: table;
 }
 .ccCustom-input .ccStandalone-input {

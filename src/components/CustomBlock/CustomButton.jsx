@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../css/CustomButton.css'
+import styles from './css/CustomButton.css'
 
 const CustomButton = (props) => {
     return (

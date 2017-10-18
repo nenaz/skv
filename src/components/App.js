@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import AccountFromToSelectBlock from './AccountFromToSelectBlock'
 import TableRatesBlock from './TableRatesBlock'
-import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock/SelectCurrencyBlock'
-import CustomInput from './CustomInput'
-import CustomInfoBlock from './CustomInfoBlock'
-import CustomButton from './CustomButton'
+import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock'
+import CustomBlock from './CustomBlock'
 import Utils from '../js/utils'
 import styles from '../css/App.css'
 
@@ -70,9 +68,7 @@ class App extends Component {
           <TableRatesBlock {...this.state}/>
           <AccountFromToSelectBlock accountList={this.state.accountList}/>
           <SelectCurrencyBlock />
-          <CustomInput />
-          <CustomInfoBlock />
-          <CustomButton />
+          <CustomBlock />
         </div>
       )
     } else {

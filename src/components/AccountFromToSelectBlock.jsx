@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import AccountFromToBlock from './AccountFromToBlock'
-import SelectAccountList from './SelectAccounts/SelectAccountList'
+import SelectAccountList from './SelectAccounts'
 import Utils from '../js/utils'
 
 class AccountFromToSelectBlock extends Component {

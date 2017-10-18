@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../css/CustomInfoBlock.css'
+import styles from './css/CustomInfoBlock.css'
 
 const CustomInfoBlock = (props) => {
     return (
