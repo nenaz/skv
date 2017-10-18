@@ -5,6 +5,9 @@ import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock'
 import CustomBlock from './CustomBlock'
 import Utils from '../js/utils'
 import styles from '../css/App.css'
+import store from '../store'
+import Counter from './Counter'
+import {Provider} from 'react-redux'
 
 class App extends Component {
   constructor(props) {
@@ -64,12 +67,15 @@ class App extends Component {
     console.log('render app')
     if (this.state.accountList && this.state.rates) {
       return (
-        <div className={styles.appElem}>
-          <TableRatesBlock {...this.state}/>
-          <AccountFromToSelectBlock accountList={this.state.accountList}/>
-          <SelectCurrencyBlock />
-          <CustomBlock />
-        </div>
+        <Provider store={store}>
+          <div className={styles.appElem}>
+            <TableRatesBlock {...this.state}/>
+            <AccountFromToSelectBlock accountList={this.state.accountList}/>
+            <SelectCurrencyBlock />
+            <CustomBlock />
+            <Counter />
+          </div>
+        </Provider>
       )
     } else {
       return <div>Loading ...</div>
