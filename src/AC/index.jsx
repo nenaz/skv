@@ -2,7 +2,9 @@ import {
     INCREMENT,
     CHANGEVALUE,
     SELECTTRANSACTIONVALUE,
-    CHANGERATES
+    CHANGERATES,
+    CHANGEACCOUNTFROM,
+    CHANGEACCOUNTTO
 } from '../js/consts'
 
 export function increment() {
@@ -27,5 +29,19 @@ export function selectTransactionCurrency() {
 export function changeRates() {
     return {
         type: CHANGERATES
+    }
+}
+
+export function changeAccountFrom(value) {
+    return {
+        type: CHANGEACCOUNTFROM,
+        payload: value
+    }
+}
+
+export function changeAccountTo(value) {
+    return {
+        type: CHANGEACCOUNTTO,
+        payload: value
     }
 }

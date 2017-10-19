@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 import AccountFromToBlock from './AccountFromToBlock'
 import SelectAccountList from './SelectAccounts'
 import Utils from '../js/utils'
+import {connect} from 'react-redux'
+import {changeAccountFrom, changeAccountTo} from '../AC'
 
 class AccountFromToSelectBlock extends Component {
     constructor(props) {
         super(props)
-        // this.cctObj = Utils.initialValueForAccounts(this.props.accountList)
         this.state = {
             filterClose: true,
-            // accountFrom: this.cctObj.accountFrom,
-            // accountTo: this.cctObj.accountTo,
         }
         this.handleFilterToggle = this.handleFilterToggle.bind(this)
         this.selectAccount = this.selectAccount.bind(this)
@@ -27,28 +26,27 @@ class AccountFromToSelectBlock extends Component {
     selectAccount(e) {
         const ttt = Utils.findAcctObject(this.props.accountList, e.target.closest('li').getAttribute('data-acct'))
         if (this.state.initiator) {
-            this.setState({
-                acctFrom: ttt
-            })
+            this.props.changeAccountFrom(ttt);
         } else {
-            this.setState({
-                acctTo: ttt
-            })
+            this.props.changeAccountTo(ttt)
         }
         this.handleFilterToggle()
     }
 
     render() {
-        console.log(this.state)
+        console.log(this.props)
         const acctObj = Utils.initialValueForAccounts(this.props.accountList)
         return (
             <div>
-                <AccountFromToBlock account={this.state.acctFrom || acctObj.accountFrom} title="Списать со счета" handleFilterToggle={this.handleFilterToggle} initiator={true} />
-                <AccountFromToBlock account={this.state.acctTo || acctObj.accountTo} title="Зачислить на счет" handleFilterToggle={this.handleFilterToggle} initiator={false} />
+                <AccountFromToBlock account={this.props.accountFrom || acctObj.accountFrom} title="Списать со счета" handleFilterToggle={this.handleFilterToggle} initiator={true} />
+                <AccountFromToBlock account={this.props.accountTo || acctObj.accountTo} title="Зачислить на счет" handleFilterToggle={this.handleFilterToggle} initiator={false} />
                 <SelectAccountList accountList={this.props.accountList} filterClose={(this.state.filterClose) ? 'goDown100' : '_'} handleFilterToggle={this.handleFilterToggle} selectAccount={this.selectAccount} />
             </div>
         )
     }
 }
 
-export default AccountFromToSelectBlock
+export default connect(state => ({
+    accountFrom: state.changeAccountFrom,
+    accountTo: state.changeAccountTo
+}), {changeAccountFrom, changeAccountTo})(AccountFromToSelectBlock)
