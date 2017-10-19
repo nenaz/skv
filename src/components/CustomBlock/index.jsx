@@ -20,7 +20,7 @@ class CustomBlock extends Component {
         return (
             <div>
                 <CustomInput inputChangeHandler={this.inputChangeHandler} />
-                <CustomInfoBlock />
+                <CustomInfoBlock rates={this.props.rates} />
                 <CustomButton />
             </div>
         )

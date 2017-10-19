@@ -2,7 +2,7 @@ import {
     INCREMENT,
     CHANGEVALUE,
     SELECTTRANSACTIONVALUE,
-    // CHANGERATES
+    CHANGERATES
 } from '../js/consts'
 
 export function increment() {
@@ -24,8 +24,8 @@ export function selectTransactionCurrency() {
     }
 }
 
-// export function changeRates() {
-//     return {
-//         type: CHANGERATES
-//     }
-// }
+export function changeRates() {
+    return {
+        type: CHANGERATES
+    }
+}
