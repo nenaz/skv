@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import styles from '../css/TableRatesBlock.css'
 import LineRatesHeaderBlock from './LineRatesHeaderBlock'
-// import Utils from '../js/utils'
 
-export default class TableRatesBlock extends Component {
+class TableRatesBlock extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            // rates: {}
-        }
+        this.state = {}
     }
 
     render () {
@@ -60,3 +57,5 @@ export default class TableRatesBlock extends Component {
         }
     }
 }
+
+export default TableRatesBlock

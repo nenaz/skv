@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import AccountFromToSelectBlock from './AccountFromToSelectBlock'
+// import AccountFromToSelectBlock from './AccountFromToSelectBlock'
 import TableRatesBlock from './TableRatesBlock'
 import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock'
 import CustomBlock from './CustomBlock'
 import Utils from '../js/utils'
 import styles from '../css/App.css'
 import store from '../store'
-import Counter from './Counter'
+// import Counter from './Counter'
 import {Provider} from 'react-redux'
 
 class App extends Component {
@@ -69,11 +69,11 @@ class App extends Component {
       return (
         <Provider store={store}>
           <div className={styles.appElem}>
-            <TableRatesBlock {...this.state}/>
-            <AccountFromToSelectBlock accountList={this.state.accountList}/>
-            <SelectCurrencyBlock />
+            <TableRatesBlock rates={this.state.rates}/>
+            {/* <AccountFromToSelectBlock accountList={this.state.accountList}/>*/}
+            <SelectCurrencyBlock rates={this.state.rates}/>
             <CustomBlock />
-            <Counter />
+            {/* <Counter /> */}
           </div>
         </Provider>
       )

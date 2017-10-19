@@ -2,30 +2,37 @@ import React, { Component } from 'react'
 import CustomInput from './CustomInput'
 import CustomButton from './CustomButton'
 import CustomInfoBlock from './CustomInfoBlock'
+import {connect} from 'react-redux'
+import {changeInputValue} from '../../AC'
 
-export default class CustomBlock extends Component {
+class CustomBlock extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            value: ''
-        }
 
         this.inputChangeHandler = this.inputChangeHandler.bind(this)
     }
 
-    inputChangeHandler(e) {
-        this.setState({
-            value: e.target.value
-        })
+    inputChangeHandler = (e) => {
+        this.props.changeInputValue(e.target.value)
     }
 
     render() {
         return (
             <div>
-                <CustomInput value={this.state.value} inputChangeHandler={this.inputChangeHandler} />
-                <CustomInfoBlock value={this.state.value}/>
+                <CustomInput inputChangeHandler={this.inputChangeHandler} />
+                <CustomInfoBlock />
                 <CustomButton />
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        inputValue: state.inputValue
+    }
+}
+
+const mapDispatch = {changeInputValue}
+
+export default connect(mapStateToProps, mapDispatch)(CustomBlock)

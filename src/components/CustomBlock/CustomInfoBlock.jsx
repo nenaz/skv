@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from './css/CustomInfoBlock.css'
+import {connect} from 'react-redux'
 
 const CustomInfoBlock = (props) => {
+    console.log(props)
     return (
         <div className={styles.skvDescText}>
             <div className="SkvDescriptionLin1">На счёт будет зачислено 0<span className="ccA2F USD">,00 </span></div>
@@ -10,4 +12,7 @@ const CustomInfoBlock = (props) => {
     )
 }
 
-export default CustomInfoBlock
+export default connect(state => ({
+    selectedButton: state.selectedButton,
+    inputValue: state.inputValue
+}))(CustomInfoBlock)
