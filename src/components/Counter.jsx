@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {increment} from '../AC'
 
 class Counter extends Component {
 
     handleIncrement = () => {
         console.log('incrementing')
-        this.props.dispatch({
-            type: 'INCREMENT'
-        })
+        this.props.dispatchIncrement()
     }
 
     render() {
@@ -26,7 +25,11 @@ function mapStateToProps(state) {
     }
 }
 
-const decorator = connect(mapStateToProps)
+const mapToDispatch = {
+    dispatchIncrement: increment
+}
+
+const decorator = connect(mapStateToProps, mapToDispatch)
 
 export default decorator(Counter)
 // export default connect(mapStateToProps)(Counter)
