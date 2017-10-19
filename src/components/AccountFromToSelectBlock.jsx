@@ -16,7 +16,6 @@ class AccountFromToSelectBlock extends Component {
     }
 
     handleFilterToggle(initiator) {
-        console.log('filterClose')
         this.setState({
             filterClose: !this.state.filterClose,
             initiator: initiator
@@ -24,17 +23,16 @@ class AccountFromToSelectBlock extends Component {
     }
     
     selectAccount(e) {
-        const ttt = Utils.findAcctObject(this.props.accountList, e.target.closest('li').getAttribute('data-acct'))
+        const actualAcctObject = Utils.findAcctObject(this.props.accountList, e.target.closest('li').getAttribute('data-acct'))
         if (this.state.initiator) {
-            this.props.changeAccountFrom(ttt);
+            this.props.changeAccountFrom(actualAcctObject);
         } else {
-            this.props.changeAccountTo(ttt)
+            this.props.changeAccountTo(actualAcctObject)
         }
         this.handleFilterToggle()
     }
 
     render() {
-        console.log(this.props)
         const acctObj = Utils.initialValueForAccounts(this.props.accountList)
         return (
             <div>

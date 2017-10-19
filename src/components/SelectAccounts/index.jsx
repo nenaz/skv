@@ -12,7 +12,6 @@ export default class SelectAccountList extends Component {
     }
     
     render() {
-        console.log('this.props.filterClose = '+this.props)
         return (
             <div className={`${styles.ccSelectAccountList} ${styles[this.props.filterClose]}`}>
                 <SelectAccountHeader handleFilterToggle={this.props.handleFilterToggle}/>

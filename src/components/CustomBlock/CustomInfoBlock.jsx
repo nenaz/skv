@@ -7,7 +7,6 @@ const CustomInfoBlock = (props) => {
     const rateObj = (props.rates).filter(item => item.sym === 'USD/RUB')
     const rate = (true) ? rateObj[0].a : rateObj[0].b
     const summ = (props.selectedButton) ? props.inputValue * rate : props.inputValue / rate
-    console.log(rateObj)
     return (
         <div className={styles.skvDescText}>
             <div className="SkvDescriptionLin1">{(props.selectedButton) ? strValues.fromAccountText : strValues.toAccountText} {summ}</div>

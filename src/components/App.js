@@ -36,7 +36,6 @@ class App extends Component {
   }
 
   wsOnMessageEvent(data) {
-    console.log('data[0] = '+data[0])
       switch (data[0]) {
         case 'GetRate': this.setState({ rates: data[1] })
           break
@@ -63,7 +62,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('render app')
     if (this.state.accountList && this.state.rates) {
       return (
         <Provider store={store}>
