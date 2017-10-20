@@ -15,8 +15,7 @@ class App extends Component {
     this.state = {
       users: [],
       error: null,
-      connection: false,
-      page: 1
+      connection: false
     }
 
     this.handleClickGetRate = this.handleClickGetRate.bind(this)
@@ -67,13 +66,13 @@ class App extends Component {
     if (this.state.accountList && this.state.rates) {
       return (
         <div className={styles.appElem}>
-          <div className={styles.page1}>
+          <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "active-no" : ""]}`}>
             <TableRatesBlock rates={this.state.rates}/>
             <AccountFromToSelectBlock accountList={this.state.accountList}/>
             <SelectCurrencyBlock />
             <CustomBlock rates={this.state.rates}/>
           </div>
-          <div className={styles.page2}>
+          <div className={`${styles.page2} ${styles[(this.props.changePage !== 2) ? "active-no" : ""]}`}>
             <OneRate />
             <InfoBeforeFinish />
           </div>

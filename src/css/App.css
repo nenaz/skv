@@ -6,4 +6,8 @@
 }
 .appElem {
   overflow: hidden;
+  transition: all 600ms ease;
+}
+.appElem .active-no {
+  display: none;
 }

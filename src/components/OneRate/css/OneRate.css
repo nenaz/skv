@@ -1,0 +1,47 @@
+.page2 .apply-title {
+  color: #fff;
+  font-size: 20px;
+  font-family: whitney-book;
+  padding: 15px 0 0;
+}
+.page2 .apply-rate {
+  font-size: 55px;
+  line-height: 55px;
+  padding-top: 25px;
+  padding-bottom: 0;
+  position: relative;
+}
+.page2 .apply-rate .blockUpdateRate {
+  padding-bottom: 0;
+  font-size: 70px;
+  display: inline-block;
+}
+.page2 .apply-rate .blockUpdateRate .neutral {
+  color: #fff;
+}
+.page2 .apply-rate .blockUpdateRate .greenRate {
+  color: #26ba79;
+}
+.page2 .apply-rate .blockUpdateRate .redRate {
+  color: #ff5d5d;
+}
+.page2 .apply-rate .blockUpdateRate .neutral.ccArrow.dpIcons {
+  font-size: 20px;
+  transform: rotate(90deg);
+  display: inline-block;
+  transition: transform 0.2s cubic-bezier(0.47, 0, 0.75, 0.72);
+  position: absolute;
+  top: 67%;
+  line-height: 0;
+}
+.page2 .apply-rate .blockUpdateRate .apply-description.description1 {
+  padding: 22px 0 0;
+  color: #aac8df!important;
+}
+.page2 .apply-rate .blockUpdateRate .apply-description.description2 {
+  padding: 22px 0;
+  color: #fff;
+}
+.page2 .apply-rate .blockUpdateRate .apply-description.description2 span {
+  color: #fff;
+}
