@@ -11,3 +11,8 @@
   background-color: #ccccce;
   transition: all 200ms ease-in;
 }
+.active {
+  border-color: #0072bc;
+  color: #fff;
+  background-color: #0072bc;
+}

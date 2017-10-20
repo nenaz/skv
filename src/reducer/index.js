@@ -5,6 +5,7 @@ import selectedButton from './selectionButtons'
 import rates from './rates'
 import changeAccountFrom from './changeAccountFrom'
 import changeAccountTo from './changeAccountTo'
+import changePage from './changePage'
 
 export default combineReducers({
     count: counterReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     selectedButton,
     rates,
     changeAccountFrom,
-    changeAccountTo
+    changeAccountTo,
+    changePage
 })

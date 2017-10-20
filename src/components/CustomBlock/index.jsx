@@ -21,7 +21,7 @@ class CustomBlock extends Component {
             <div>
                 <CustomInput inputChangeHandler={this.inputChangeHandler} />
                 <CustomInfoBlock rates={this.props.rates} />
-                <CustomButton />
+                <CustomButton active={(this.props.inputValue) ? 'active' : ''}/>
             </div>
         )
     }

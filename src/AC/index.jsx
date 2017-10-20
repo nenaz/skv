@@ -4,7 +4,8 @@ import {
     SELECTTRANSACTIONVALUE,
     CHANGERATES,
     CHANGEACCOUNTFROM,
-    CHANGEACCOUNTTO
+    CHANGEACCOUNTTO,
+    CHANGEPAGE
 } from '../js/consts'
 
 export function increment() {
@@ -42,6 +43,13 @@ export function changeAccountFrom(value) {
 export function changeAccountTo(value) {
     return {
         type: CHANGEACCOUNTTO,
+        payload: value
+    }
+}
+
+export function changePage(value) {
+    return {
+        type: CHANGEPAGE,
         payload: value
     }
 }

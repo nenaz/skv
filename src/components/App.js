@@ -5,8 +5,9 @@ import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock'
 import CustomBlock from './CustomBlock'
 import Utils from '../js/utils'
 import styles from '../css/App.css'
-import store from '../store'
-import {Provider} from 'react-redux'
+import OneRate from './OneRate'
+import InfoBeforeFinish from './InfoBeforeFinish'
+import {connect} from 'react-redux'
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,8 @@ class App extends Component {
     this.state = {
       users: [],
       error: null,
-      connection: false
+      connection: false,
+      page: 1
     }
 
     this.handleClickGetRate = this.handleClickGetRate.bind(this)
@@ -64,14 +66,18 @@ class App extends Component {
   render() {
     if (this.state.accountList && this.state.rates) {
       return (
-        <Provider store={store}>
-          <div className={styles.appElem}>
+        <div className={styles.appElem}>
+          <div className={styles.page1}>
             <TableRatesBlock rates={this.state.rates}/>
             <AccountFromToSelectBlock accountList={this.state.accountList}/>
             <SelectCurrencyBlock />
             <CustomBlock rates={this.state.rates}/>
           </div>
-        </Provider>
+          <div className={styles.page2}>
+            <OneRate />
+            <InfoBeforeFinish />
+          </div>
+        </div>
       )
     } else {
       return <div>Loading ...</div>
@@ -79,4 +85,6 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect(state => ({
+  changePage: state.changePage
+}))(App)

@@ -3,7 +3,7 @@ import styles from './css/CustomButton.css'
 
 const CustomButton = (props) => {
     return (
-        <span className={styles.ccMainTab} action="">Продолжить</span>
+        <span className={`${styles.ccMainTab} ${styles[props.active]}`} >Продолжить</span>
     )
 }
 

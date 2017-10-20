@@ -33,6 +33,7 @@ class AccountFromToSelectBlock extends Component {
     }
 
     render() {
+        console.log('render accounts block')
         const acctObj = Utils.initialValueForAccounts(this.props.accountList)
         return (
             <div>
