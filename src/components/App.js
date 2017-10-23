@@ -3,11 +3,13 @@ import AccountFromToSelectBlock from './AccountFromToSelectBlock'
 import TableRatesBlock from './TableRatesBlock'
 import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock'
 import CustomBlock from './CustomBlock'
-import Utils from '../js/utils'
+// import Utils from '../js/utils'
 import styles from '../css/App.css'
 import OneRate from './OneRate'
 import InfoBeforeFinish from './InfoBeforeFinish'
 import {connect} from 'react-redux'
+// import {wsConnect} from '../AC'
+import Socket from '../js/socket'
 
 class App extends Component {
   constructor(props) {
@@ -23,11 +25,26 @@ class App extends Component {
 
   componentWillMount() {
     // this.ws = new WebSocket('ws://10.255.14.131:8099', 'echo-protocol')
-    this.ws = new WebSocket('ws://localhost:8099', 'echo-protocol')
-    this.ws.onopen = e => this.getStartDataFromServer()
-    this.ws.onmessage = e => this.wsOnMessageEvent(JSON.parse(e.data))
-    this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
-    this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
+    // this.ws = this.props.wsConnect('ws://10.255.14.131:8099', 'echo-protocol')
+    this.ws = new Socket()
+    // this.ws.connect().then(() => {
+    //   console.log('result')
+    // }, (error) => {
+    //   console.log('error')
+    // })
+
+    this.ws.connect()
+    .then(function(){
+      console.log('resolve')
+    }, function(error) {
+      console.log('reject')
+    })
+
+    // this.ws = new WebSocket('ws://localhost:8099', 'echo-protocol')
+    // this.ws.onopen = e => this.getStartDataFromServer()
+    // this.ws.onmessage = e => this.wsOnMessageEvent(JSON.parse(e.data))
+    // this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
+    // this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
   }
 
   getStartDataFromServer() {
@@ -47,14 +64,15 @@ class App extends Component {
   }
 
   handleClickGetRate(str, obj = {}) {
-      this.ws.send(JSON.stringify(Utils.handleClickGetRate(str, obj)));
+      this.socket.send(str, obj);
   }
 
   componentDidMount() {
-    const me = this
-    me.intervalId = setInterval(() => {
-      me.handleClickGetRate('GetRate')
-    }, 5000)
+      // const me = this
+      // me.intervalId = setInterval(() => {
+        // me.handleClickGetRate.bind('GetRate')
+      // }, 5000)
+      // this.handleClickGetRate('GetRate')
   }
 
   componentWillUnmount() {

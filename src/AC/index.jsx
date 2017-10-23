@@ -5,7 +5,8 @@ import {
     CHANGERATES,
     CHANGEACCOUNTFROM,
     CHANGEACCOUNTTO,
-    CHANGEPAGE
+    CHANGEPAGE,
+    WSCONNECT
 } from '../js/consts'
 
 export function increment() {
@@ -51,5 +52,15 @@ export function changePage(value) {
     return {
         type: CHANGEPAGE,
         payload: value
+    }
+}
+
+export function wsConnect(url, protocol) {
+    return {
+        type: WSCONNECT,
+        payload: {
+            url,
+            protocol
+        }
     }
 }
