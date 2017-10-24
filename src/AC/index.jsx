@@ -28,9 +28,10 @@ export function selectTransactionCurrency() {
     }
 }
 
-export function changeRates() {
+export function changeRates(rates) {
     return {
-        type: CHANGERATES
+        type: CHANGERATES,
+        payload: rates
     }
 }
 

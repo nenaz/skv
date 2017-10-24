@@ -18,4 +18,5 @@ const CustomInfoBlock = (props) => {
 export default connect(state => ({
     selectedButton: state.selectedButton,
     inputValue: state.inputValue,
+    rates: state.rates
 }))(CustomInfoBlock)

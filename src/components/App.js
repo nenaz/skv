@@ -8,7 +8,7 @@ import styles from '../css/App.css'
 import OneRate from './OneRate'
 import InfoBeforeFinish from './InfoBeforeFinish'
 import {connect} from 'react-redux'
-// import {wsConnect} from '../AC'
+import {changeRates} from '../AC'
 import Socket from '../js/socket'
 
 class App extends Component {
@@ -24,20 +24,16 @@ class App extends Component {
   }
 
   componentWillMount() {
-    // this.ws = new WebSocket('ws://10.255.14.131:8099', 'echo-protocol')
-    // this.ws = this.props.wsConnect('ws://10.255.14.131:8099', 'echo-protocol')
+    const me = this;
     this.ws = new Socket()
-    // this.ws.connect().then(() => {
-    //   console.log('result')
-    // }, (error) => {
-    //   console.log('error')
-    // })
-
-    this.ws.connect()
-    .then(function(){
-      console.log('resolve')
-    }, function(error) {
-      console.log('reject')
+    this.ws.connect('ws://10.255.14.131:8099', 'echo-protocol').then((connection) => {
+      console.log('result')
+      this.ws.connection = connection
+      me.ws.newData = (e) => me.wsOnMessageEvent(JSON.parse(e.data))
+      me.getStartDataFromServer();
+      
+    }, (error) => {
+      console.log('error')
     })
 
     // this.ws = new WebSocket('ws://localhost:8099', 'echo-protocol')
@@ -54,8 +50,9 @@ class App extends Component {
   }
 
   wsOnMessageEvent(data) {
+    console.log(this.props)
       switch (data[0]) {
-        case 'GetRate': this.setState({ rates: data[1] })
+        case 'GetRate': this.props.changeRates(data[1])
           break
         case 'Accounts': this.setState({ accountList: data[1].accounts })
           break
@@ -64,7 +61,7 @@ class App extends Component {
   }
 
   handleClickGetRate(str, obj = {}) {
-      this.socket.send(str, obj);
+      this.ws.sendMessage(str, obj);
   }
 
   componentDidMount() {
@@ -81,14 +78,14 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.accountList && this.state.rates) {
+    if (this.state.accountList && this.props.rates.length) {
       return (
         <div className={styles.appElem}>
           <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "active-no" : ""]}`}>
-            <TableRatesBlock rates={this.state.rates}/>
+            <TableRatesBlock rates={this.props.rates}/>
             <AccountFromToSelectBlock accountList={this.state.accountList}/>
             <SelectCurrencyBlock />
-            <CustomBlock rates={this.state.rates}/>
+            <CustomBlock rates={this.props.rates}/>
           </div>
           <div className={`${styles.page2} ${styles[(this.props.changePage !== 2) ? "active-no" : ""]}`}>
             <OneRate />
@@ -103,5 +100,7 @@ class App extends Component {
 }
 
 export default connect(state => ({
-  changePage: state.changePage
-}))(App)
+  changePage: state.changePage,
+  rates: state.rates,
+  accountList: state.accountList
+}),{changeRates})(App)

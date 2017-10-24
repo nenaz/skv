@@ -2,19 +2,21 @@ import Utils from './utils'
 
 export default class WsSocket {
     socket
-    connect() {
+    connect(url, protocol) {
         const me = this
-        this.socket = new WebSocket('ws://10.255.14.131:8099','echo-protocol')
+        this.socket = new WebSocket(url, protocol)
         return new Promise((resolve, reject) => {
-            me.socket.open = (e) => resolve()
-            me.socket.close = (e) => reject()
+            me.socket.onopen = (e) => resolve(true)
+            me.socket.onerror = (e) => reject(e)
+            me.socket.onmessage = (e) => this.newData(e)
         })
-        // return new Promise(function(resolve, reject){
-
-        // })
     }
 
-    send(str, obj) {
+    sendMessage(str, obj) {
         this.socket.send(JSON.stringify(Utils.handleClickGetRate(str, obj)))
     }
+
+    // newData(e) {
+    //     return e.data
+    // }
 }
