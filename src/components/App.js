@@ -26,15 +26,16 @@ class App extends Component {
   componentWillMount() {
     const me = this;
     this.ws = new Socket()
-    this.ws.connect('ws://10.255.14.131:8099', 'echo-protocol').then((connection) => {
-      console.log('result')
-      this.ws.connection = connection
-      me.ws.newData = (e) => me.wsOnMessageEvent(JSON.parse(e.data))
-      me.getStartDataFromServer();
-      
-    }, (error) => {
-      console.log('error')
-    })
+    this.ws.connect('ws://10.255.14.131:8099', 'echo-protocol')
+      .then((connection) => {
+        console.log('result')
+        this.ws.connection = connection
+        me.ws.newData = (e) => me.wsOnMessageEvent(JSON.parse(e.data))
+        me.getStartDataFromServer()
+      }, (error) => {
+        console.log('error')
+      })
+    
 
     // this.ws = new WebSocket('ws://localhost:8099', 'echo-protocol')
     // this.ws.onopen = e => this.getStartDataFromServer()
@@ -47,6 +48,11 @@ class App extends Component {
     const me = this
     me.handleClickGetRate('GetAccounts', {client: '2041111'})
     me.handleClickGetRate('GetRate')
+    me.ws.wsCreateRefresher({
+      method: 'GetRate',
+      withParameters: false,
+      data: {}
+    }, 5000)
   }
 
   wsOnMessageEvent(data) {
