@@ -20,7 +20,7 @@ export default class WsSocket {
     refreshers = []
 
     wsCreateRefresher(paramObj, interval) {
-        debugger
+        // debugger
         const data = (paramObj.withParameters) ? paramObj.data : {},
             wsReqArr = []
         

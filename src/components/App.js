@@ -26,7 +26,8 @@ class App extends Component {
   componentWillMount() {
     const me = this;
     this.ws = new Socket()
-    this.ws.connect('ws://10.255.14.131:8099', 'echo-protocol')
+    // this.ws.connect('ws://10.255.14.131:8099', 'echo-protocol')
+    this.ws.connect('ws://localhost:8099', 'echo-protocol')
       .then((connection) => {
         console.log('result')
         this.ws.connection = connection
@@ -53,6 +54,7 @@ class App extends Component {
       withParameters: false,
       data: {}
     }, 5000)
+    debugger
   }
 
   wsOnMessageEvent(data) {
