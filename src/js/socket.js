@@ -19,7 +19,7 @@ export default class WsSocket {
 
     refreshers = []
 
-    wsCreateRefresher(paramObj, interval) {
+    wsCreateRefresher(paramObj, interval, instance) {
         // debugger
         const data = (paramObj.withParameters) ? paramObj.data : {},
             wsReqArr = []
@@ -27,7 +27,9 @@ export default class WsSocket {
         wsReqArr[0] = paramObj.method
         wsReqArr[1] = paramObj.data
 
-        this.refreshers.push(new wsRefresher(() => console.log('1'), 5000))
+        this.refreshers.push(new wsRefresher(instance, 5000, true))
+
+        
 
         // var data = (paramObj.withParameters) ? paramObj.data : {},
         //     amount = page.manualAmountInput,
@@ -70,5 +72,26 @@ export default class WsSocket {
         //     page.wsRefreshers[num].stop();
         // };
         // return page.wsRefreshers.length - 1;
+    }
+
+    wsEnableRefreshers() {
+        let i = 0
+        for (i = this.refreshers.length; i--;) {
+            this.refreshers[i].start();
+        }
+    }
+
+    wsDisableRefreshers() {
+        let i = 0
+        for (i = this.refreshers.length; i--;) {
+            this.refreshers[i].stop();
+        }
+    }
+    
+    wsDestroyRefreshers() {
+        let i = 0
+        for (i = this.refreshers.length; i--;) {
+            this.refreshers.shift();
+        }
     }
 }

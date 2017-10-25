@@ -10,6 +10,7 @@ import InfoBeforeFinish from './InfoBeforeFinish'
 import {connect} from 'react-redux'
 import {changeRates} from '../AC'
 import Socket from '../js/socket'
+import {TESTACCOUNT} from '../js/consts'
 
 class App extends Component {
   constructor(props) {
@@ -47,18 +48,17 @@ class App extends Component {
 
   getStartDataFromServer() {
     const me = this
-    me.handleClickGetRate('GetAccounts', {client: '2041111'})
-    me.handleClickGetRate('GetRate')
+    me.handleClickGetRate('GetAccounts', {client: TESTACCOUNT})
     me.ws.wsCreateRefresher({
       method: 'GetRate',
       withParameters: false,
       data: {}
-    }, 5000)
-    debugger
+    }, 5000, me.handleClickGetRate)
+    this.ws.wsEnableRefreshers()
   }
 
   wsOnMessageEvent(data) {
-    console.log(this.props)
+    // console.log(this.props)
       switch (data[0]) {
         case 'GetRate': this.props.changeRates(data[1])
           break
@@ -73,29 +73,38 @@ class App extends Component {
   }
 
   componentDidMount() {
-      // const me = this
-      // me.intervalId = setInterval(() => {
-        // me.handleClickGetRate.bind('GetRate')
-      // }, 5000)
-      // this.handleClickGetRate('GetRate')
+    // console.log('start')
+    // this.ws.wsDisableRefreshers()
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    // console.log('componentWillUpdate')
+    // console.log(nextProps)
+    // console.log(nextState)
+    // if (this.props.changePage === 1) {
+    //   this.ws.wsEnableRefreshers()
+    // } else {
+    //   console.log('changepage2')
+    //   this.ws.wsEnableRefreshers()
+    // }
   }
 
   componentWillUnmount() {
     this.ws.close()
-    clearInterval(this.intervalId)
   }
 
   render() {
+    // console.log('render')
     if (this.state.accountList && this.props.rates.length) {
       return (
         <div className={styles.appElem}>
-          <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "active-no" : ""]}`}>
+          <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "left100" : ""]}`}>
             <TableRatesBlock rates={this.props.rates}/>
             <AccountFromToSelectBlock accountList={this.state.accountList}/>
             <SelectCurrencyBlock />
             <CustomBlock rates={this.props.rates}/>
           </div>
-          <div className={`${styles.page2} ${styles[(this.props.changePage !== 2) ? "active-no" : ""]}`}>
+          <div className={`${styles.page2} ${styles[(this.props.changePage !== 2) ? "right100" : ""]}`}>
             <OneRate />
             <InfoBeforeFinish />
           </div>

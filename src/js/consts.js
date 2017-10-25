@@ -6,6 +6,9 @@ export const CHANGEACCOUNTFROM = 'CHANGEACCOUNTFROM'
 export const CHANGEACCOUNTTO = 'CHANGEACCOUNTTO'
 export const CHANGEPAGE = 'CHANGEPAGE'
 export const WSCONNECT = 'WSCONNECT'
+
+export const TESTACCOUNT = '2041111'
+
 export const strValues = {
     toAccountText: 'На счет будет зачислено',
     fromAccountText: 'Со счета будет списано'

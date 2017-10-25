@@ -1,23 +1,33 @@
 import React, {Component} from 'react'
+import HeadTitle from '../HeadTitle'
+import styles from './css/InfoBeforeFinish.css'
+import {connect} from 'react-redux'
+import Utils from '../../js/utils'
 
 class InfoBlock extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+    }
+
     render() {
+        console.log(this.props)
+        let accountF = {__html: (this.props.accountFrom) ? Utils.account2format(this.props.accountFrom.id) : ''}
+        let accountT = {__html: (this.props.accountTo) ? Utils.account2format(this.props.accountTo.id) : ''}
         return (
             <div id="block">
-                <h3 className="dpSidebarAccountsHeader" id="dpDetails">Детали</h3>
-                <div className="dpOperationBody">
-                    <div className="dpOperationPartnerInfo">
-                        <div className="dpOperationPartnerMoreInfo open">
-                            <p className="aplly-company">Компания: <span>
-                        ЗАО "Пропан-трейдинг"
-                    </span></p>
-                            <p className="apply-account-from">Со счета: <span>40702 810 3 0000 0010001</span></p>
-                            <p className="apply-account-to">На счет: <span>40702 840 9 0000 0030003</span></p>
+                <HeadTitle title="Детали" />
+                <div className={styles["dpOperationBody"]}>
+                    <div className={styles["dpOperationPartnerInfo"]}>
+                        <div className={`${styles["dpOperationPartnerMoreInfo"]} ${styles["open"]}`}>
+                            <p className="aplly-company">Компания: <span>ЗАО "Пропан-трейдинг"</span></p>
+                            <p className="apply-account-from">Со счета: <span dangerouslySetInnerHTML={accountF}></span></p>                            
+                            <p className="apply-account-to">На счет: <span dangerouslySetInnerHTML={accountT}></span></p>
                             <p className="apply-amount"><span>Сумма списания: </span><span>96<span className="ccA2F RUB">,00 </span></span></p>
                         </div>
                     </div>
                 </div>
-                <h3 className="dpSidebarAccountsHeader dpDeatailsHint">Как только Вас устроит курс, нажмите на кнопку <span>Купить</span></h3>
+                <HeadTitle title="Как только Вас устроит курс, нажмите на кнопку Купить" />
                 <div className="holdExpectation" >
                     <div className="dpMainSvgContainer"></div>
                     <div className="message-text-apply message-text-apply-1">
@@ -34,4 +44,7 @@ class InfoBlock extends Component {
     }
 }
 
-export default InfoBlock
+export default connect(state => ({
+    accountFrom: state.changeAccountFrom,
+    accountTo: state.changeAccountTo
+}))(InfoBlock)

@@ -1,15 +1,11 @@
 class wsRefresher {
-    debugger
     constructor(serviceInstance, timeout, firstTimeExpected){
         this.enabled = false
         this.serviceInstance = serviceInstance
         this.timeout = timeout
         this.firstTimeExpected = firstTimeExpected
     }
-    // const me = this
-    
-    // me.view = view;
-    // me.elemVisible = elemVisible;
+
     start() {
         var me = this
         if (!this.enabled) {
@@ -21,32 +17,24 @@ class wsRefresher {
             }
         }
     }
+
     iteration() {
         var me = this;
         if (this.enabled) {
             let req = new Promise((resolve, rejected) => {
-                // resolve(() =>{
-                    
-                        me.serviceInstance.bind(me)
-                        resolve('result')
-                   
-                // })
+                me.serviceInstance('GetRate')
+                // console.log('instance')
+                resolve('result')
             })
             req.then(result => {
                 setTimeout(() => {
-                    me.iteration.bind(me)
+                    me.iteration.call(me)
                 }, me.timeout)
             }, error => {
-                console.log('reject')
+                console.log(error)
+            }).catch(e => {
+                console.log('CATCH = ' + e)
             })
-            // $.when(me.serviceInstance()).done(function(data) {
-            //     if (me.enabled) {
-            //         setTimeout(me.iteration.bind(me), me.timeout);
-            //     }
-            // }).fail(function(error) {
-            //     console.log(error);
-            // });
-
         }
     };
     stop() {

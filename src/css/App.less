@@ -1,3 +1,6 @@
+body{
+	margin: 0;
+}
 .currencyImg {
 	display: inline-block;
 	width: 30px;
@@ -10,7 +13,21 @@
 		display: none;
 	}
 	transition: all 600ms ease;
-	.page1{}
+	.page1, .page2 {
+		position: absolute;
+		transition: 600ms ease all;
+		width: 100%;
+	}
+	.page1{
+		&.left100{
+			transform: translate3d(-100%, 0, 0)
+		}
+	}
+	.page2{
+		&.right100{
+			transform: translate3d(100%, 0, 0)
+		}
+	}
 	
 	.page3{}	
 }

@@ -1,31 +1,38 @@
-.page2 .apply-title {
+.big-title {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  width: 100%;
+  background-color: blue;
+}
+.big-title .apply-title {
   color: #fff;
   font-size: 20px;
   font-family: whitney-book;
   padding: 15px 0 0;
 }
-.page2 .apply-rate {
+.big-title .apply-rate {
   font-size: 55px;
   line-height: 55px;
   padding-top: 25px;
   padding-bottom: 0;
   position: relative;
 }
-.page2 .apply-rate .blockUpdateRate {
+.big-title .apply-rate .blockUpdateRate {
   padding-bottom: 0;
   font-size: 70px;
   display: inline-block;
 }
-.page2 .apply-rate .blockUpdateRate .neutral {
+.big-title .apply-rate .blockUpdateRate .neutral {
   color: #fff;
 }
-.page2 .apply-rate .blockUpdateRate .greenRate {
+.big-title .apply-rate .blockUpdateRate .greenRate {
   color: #26ba79;
 }
-.page2 .apply-rate .blockUpdateRate .redRate {
+.big-title .apply-rate .blockUpdateRate .redRate {
   color: #ff5d5d;
 }
-.page2 .apply-rate .blockUpdateRate .neutral.ccArrow.dpIcons {
+.big-title .apply-rate .blockUpdateRate .neutral.ccArrow.dpIcons {
   font-size: 20px;
   transform: rotate(90deg);
   display: inline-block;
@@ -34,14 +41,14 @@
   top: 67%;
   line-height: 0;
 }
-.page2 .apply-rate .blockUpdateRate .apply-description.description1 {
+.big-title .apply-rate .blockUpdateRate .apply-description.description1 {
   padding: 22px 0 0;
   color: #aac8df!important;
 }
-.page2 .apply-rate .blockUpdateRate .apply-description.description2 {
+.big-title .apply-rate .blockUpdateRate .apply-description.description2 {
   padding: 22px 0;
   color: #fff;
 }
-.page2 .apply-rate .blockUpdateRate .apply-description.description2 span {
+.big-title .apply-rate .blockUpdateRate .apply-description.description2 span {
   color: #fff;
 }
