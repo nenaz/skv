@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import AccountFromToSelectBlock from './AccountFromToSelectBlock'
-import TableRatesBlock from './TableRatesBlock'
-import SelectCurrencyBlock from './SelectedCurrencyButtonsBlock'
-import CustomBlock from './CustomBlock'
-// import Utils from '../js/utils'
+import Page1 from './Page1';
+import Page2 from './Page2';
 import styles from '../css/App.css'
-import OneRate from './OneRate'
-import InfoBeforeFinish from './InfoBeforeFinish'
-import {connect} from 'react-redux'
-import {changeRates} from '../AC'
 import Socket from '../js/socket'
 import {TESTACCOUNT} from '../js/consts'
+import {changeRates, changeAccountsList} from '../AC'
+import {connect} from 'react-redux'
+
+import {HashRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
   constructor(props) {
@@ -31,11 +28,12 @@ class App extends Component {
     this.ws.connect('ws://localhost:8099', 'echo-protocol')
       .then((connection) => {
         console.log('result')
-        this.ws.connection = connection
+        this.setState({connection: connection})
         me.ws.newData = (e) => me.wsOnMessageEvent(JSON.parse(e.data))
         me.getStartDataFromServer()
       }, (error) => {
         console.log('error')
+        this.setState({connection: false})
       })
     
 
@@ -62,7 +60,7 @@ class App extends Component {
       switch (data[0]) {
         case 'GetRate': this.props.changeRates(data[1])
           break
-        case 'Accounts': this.setState({ accountList: data[1].accounts })
+        case 'Accounts': this.props.changeAccountsList(data[1].accounts)
           break
         default: console.log('default')
       }
@@ -72,22 +70,9 @@ class App extends Component {
       this.ws.sendMessage(str, obj);
   }
 
-  componentDidMount() {
-    // console.log('start')
-    // this.ws.wsDisableRefreshers()
-  }
+  componentDidMount() {}
 
-  componentWillUpdate(nextProps, nextState) {
-    // console.log('componentWillUpdate')
-    // console.log(nextProps)
-    // console.log(nextState)
-    // if (this.props.changePage === 1) {
-    //   this.ws.wsEnableRefreshers()
-    // } else {
-    //   console.log('changepage2')
-    //   this.ws.wsEnableRefreshers()
-    // }
-  }
+  componentWillUpdate(nextProps, nextState) {}
 
   componentWillUnmount() {
     this.ws.close()
@@ -95,20 +80,15 @@ class App extends Component {
 
   render() {
     // console.log('render')
-    if (this.state.accountList && this.props.rates.length) {
+    // if (this.state.accountList && this.props.rates.length) {
+    if (this.state.connection) {
       return (
-        <div className={styles.appElem}>
-          <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "left100" : ""]}`}>
-            <TableRatesBlock rates={this.props.rates}/>
-            <AccountFromToSelectBlock accountList={this.state.accountList}/>
-            <SelectCurrencyBlock />
-            <CustomBlock rates={this.props.rates}/>
+        <Router>
+          <div className={styles.appElem}>
+            <Route path="/main" component={Page1} />
+            <Route path="/oneRate" component={Page2} />
           </div>
-          <div className={`${styles.page2} ${styles[(this.props.changePage !== 2) ? "right100" : ""]}`}>
-            <OneRate />
-            <InfoBeforeFinish />
-          </div>
-        </div>
+        </Router>
       )
     } else {
       return <div>Loading ...</div>
@@ -116,8 +96,7 @@ class App extends Component {
   }
 }
 
-export default connect(state => ({
-  changePage: state.changePage,
-  rates: state.rates,
-  accountList: state.accountList
-}),{changeRates})(App)
+export default connect(null,{
+  changeRates,
+  changeAccountsList
+})(App)

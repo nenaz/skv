@@ -6,7 +6,8 @@ import {
     CHANGEACCOUNTFROM,
     CHANGEACCOUNTTO,
     CHANGEPAGE,
-    WSCONNECT
+    WSCONNECT,
+    CHANGEACCOUNTSLIST
 } from '../js/consts'
 
 export function increment() {
@@ -63,5 +64,12 @@ export function wsConnect(url, protocol) {
             url,
             protocol
         }
+    }
+}
+
+export function changeAccountsList(value) {
+    return {
+        type: CHANGEACCOUNTSLIST,
+        payload: value
     }
 }

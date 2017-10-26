@@ -47,5 +47,6 @@ class AccountFromToSelectBlock extends Component {
 
 export default connect(state => ({
     accountFrom: state.changeAccountFrom,
-    accountTo: state.changeAccountTo
+    accountTo: state.changeAccountTo,
+    accountList: state.accountsList
 }), {changeAccountFrom, changeAccountTo})(AccountFromToSelectBlock)

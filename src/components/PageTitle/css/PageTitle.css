@@ -1,0 +1,62 @@
+.dpHeaderLeftColumn {
+  min-width: 0;
+  width: 100%;
+  padding: 16px 12px 0;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 35px;
+  display: block;
+  pointer-events: all;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock {
+  display: table;
+  width: 200%;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock .ccHeaderTitle.ccTitleMainPage {
+  display: table-cell;
+  width: 50%;
+  transition: all 400ms;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications {
+  min-height: 30px;
+  display: inline-block;
+  min-width: 45px;
+  width: 60px;
+  white-space: nowrap;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications .ccNotices {
+  display: inline-block;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications .dpNotices {
+  padding: 0px 6px;
+  font-size: 14px;
+  width: auto;
+  line-height: 20px;
+  margin-left: 0px;
+  margin-right: 15px;
+  height: 18px;
+  display: inline-block;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications::before {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 19px;
+  height: 32px;
+  line-height: 1.7;
+  width: 20px;
+  content: "\E60A";
+  height: initial;
+  font-size: 18.5px;
+  width: 22px;
+}
+.dpHeaderLeftColumn .dpHeaderTitleBlock .ccHeadersBlock .ccHeaderTitle.ccTitleMainPage .dpHeaderTitle.ccHeaderTitle {
+  padding: 2.5px 0 0 0px;
+  font-size: 21px;
+  width: 50%;
+  transition: all 400ms;
+  display: inline-block;
+  min-width: 172px;
+}
