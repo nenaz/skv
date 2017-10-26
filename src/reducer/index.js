@@ -18,5 +18,5 @@ export default combineReducers({
     changeAccountTo,
     changePage,
     accountsList,
-    wsConnect
+    wsConnect       
 })
