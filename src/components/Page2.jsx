@@ -11,9 +11,20 @@ class Page2 extends Component {
         this.state = {}
     }
 
+    selectClassName() {
+        let name = ''
+        if (this.props.changePage === 1) {
+            name = 'right100'
+        } else if (this.props.changePage === 3) {
+            name = 'left100'
+        }
+        return name
+    }
+
     render() {
+        const name = this.selectClassName()
         return (
-            <div className={`${styles.page2} ${styles[(this.props.changePage !== 2) ? "right100" : ""]}`}>
+            <div className={`${styles.page2} ${styles[name]}`}>
               <PageTitle title="Выберите курс " />
               <OneRate />
               <InfoBeforeFinish />
@@ -24,4 +35,5 @@ class Page2 extends Component {
 
 export default connect(state => ({
   changePage: state.changePage,
+  wsConnect: state.wsConnect
 }))(Page2)

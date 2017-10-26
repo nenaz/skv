@@ -1,36 +1,45 @@
 import React, {Component} from 'react'
 import styles from './css/PageTitle.css'
+import {connect} from 'react-redux'
+import {changePage} from '../../AC'
 
 class PageTitle extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            leftIconType: 'menu'
+        }
+
+        this.handleLeftIconClick = this.handleLeftIconClick.bind(this)
     }
+
+    handleLeftIconClick() {
+        if (this.props.page === 2) {
+            this.props.changePage(1)
+        } if (this.props.page === 3) {
+            this.props.changePage(2)
+        }
+    }
+
     render() {
         return (
             <div className={styles["dpHeader"]}>
-                <div className={styles["dpHeaderShadow"]}></div>
                 <div className={styles["dpHeaderLeftColumn"]}>
-                    <div className={styles["dpHeaderTitleBlock"]}>
-                        <div className={styles["ccHeadersBlock"]}>
-                            <div className={`${styles["ccHeaderTitle"]} ${styles["ccTitleMainPage"]} ${styles["off"]}`}>
-                                <span className={`${styles["dpMenuBtn ]} ${styles[notifications"]}`}>
-                                    <span className={styles["ccNotices"]}></span>
-                                <span className={styles["dpNotices"]}>10</span></span>
-                                <h1 className={`${styles["dpHeaderTitle"]} ${styles["ccHeaderTitle"]}`}>{this.props.title}</h1>
-                            </div>
-                        </div>
+                    <div className={`${styles["ccHeaderTitle"]} ${styles["ccTitleMainPage"]} ${styles["off"]}`}>
+                        <span className={`${styles["dpMenuBtn"]} ${styles["notifications"]} ${styles["icon"]}`} onClick={this.handleLeftIconClick}>
+                            <span className={styles["ccNotices"]}></span>
+                            <span className={styles["dpNotices"]}>10</span>
+                        </span>
+                        <h1 className={`${styles["dpHeaderTitle"]} ${styles["ccHeaderTitle"]}`}>{this.props.title}</h1>
                     </div>
-                </div>
-                <div className={styles["dpHeaderRightColumn"]}>
-                    <span className={`${styles["dpMenuBtn"]} ${styles["dpBtn-portrait"]} ${styles["notifications"]}`}>
-                        
-                    <span className={styles["dpNotices"]}>10</span></span>
-                    <div className={`${styles["dponoffswitch"]} ${styles["dponoffswitch-home"]}`}></div>
                 </div>
             </div>
         )
     }
 }
 
-export default PageTitle
+export default connect(state => ({
+    page: state.changePage
+}),{
+    changePage
+})(PageTitle)

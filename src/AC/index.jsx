@@ -57,13 +57,10 @@ export function changePage(value) {
     }
 }
 
-export function wsConnect(url, protocol) {
+export function wsConnect(obj) {
     return {
         type: WSCONNECT,
-        payload: {
-            url,
-            protocol
-        }
+        payload: obj
     }
 }
 

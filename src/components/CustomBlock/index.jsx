@@ -3,8 +3,8 @@ import CustomInput from './CustomInput'
 import CustomButton from './CustomButton'
 import CustomInfoBlock from './CustomInfoBlock'
 import {connect} from 'react-redux'
-import {changeInputValue} from '../../AC'
-import {changePage} from '../../AC'
+import {changeInputValue, changePage} from '../../AC'
+// import {Link} from 'react-router-dom'
 
 class CustomBlock extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class CustomBlock extends Component {
 
     handleButtonClick(e) {
         this.props.changePage(2)
+        debugger
     }
 
     render() {

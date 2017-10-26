@@ -7,6 +7,7 @@ import changeAccountFrom from './changeAccountFrom'
 import changeAccountTo from './changeAccountTo'
 import changePage from './changePage'
 import accountsList from './accountsList'
+import wsConnect from './wsconnect'
 
 export default combineReducers({
     count: counterReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
     changeAccountFrom,
     changeAccountTo,
     changePage,
-    accountsList
+    accountsList,
+    wsConnect
 })
