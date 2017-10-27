@@ -9,23 +9,32 @@ class Page2 extends Component {
     constructor(props) {
         super(props)
         this.state = {}
+        this.name = ''
     }
 
     selectClassName() {
-        let name = ''
         if (this.props.changePage === 1) {
-            name = 'right100'
+            this.name = 'right100'
         } else if (this.props.changePage === 3) {
-            name = 'left100'
+            this.name = 'left100'
         }
-        return name
+    }
+
+    componentWillMount() {
+        console.log('componentWillMount page2')
+        this.name = 'right100'
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount page2')
+        this.name = ''
     }
 
     render() {
         console.log('render page2')
-        const name = this.selectClassName()
+        // const name = this.selectClassName()
         return (
-            <div className={`${styles.page2} ${styles[name]}`}>
+            <div className={`${styles.page2} ${styles[this.name]}`}>
               <PageTitle title="Выберите курс " />
               <OneRate />
               <InfoBeforeFinish />

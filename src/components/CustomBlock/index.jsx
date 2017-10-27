@@ -20,7 +20,6 @@ class CustomBlock extends Component {
 
     handleButtonClick(e) {
         this.props.changePage(2)
-        debugger
     }
 
     render() {
