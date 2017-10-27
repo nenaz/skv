@@ -8,6 +8,7 @@ import {TESTACCOUNT} from '../js/consts'
 import {changeRates, changeAccountsList} from '../AC'
 import {connect} from 'react-redux'
 import {wsConnect} from '../AC'
+import {HashRouter as Router, Route} from 'react-router-dom'
 
 // import {HashRouter as Router, Route} from 'react-router-dom'
 
@@ -64,6 +65,7 @@ class App extends Component {
 
   wsOnMessageEvent(data) {
     // console.log(this.props)
+    // debugger
       switch (data[0]) {
         case 'GetRate': this.props.changeRates(data[1])
           this.setState({haveRates: true})
@@ -92,13 +94,16 @@ class App extends Component {
     // if (this.state.accountList && this.props.rates.length) {
     if (this.state.connection && this.state.haveAccounts && this.state.haveRates) {
       return (
+        <Router>
           <div className={styles.appElem}>
-            {/* <Route path="/main" component={Page1} />
-            <Route path="/oneRate" component={Page2} /> */}
-            <Page1 />
+            <Route path="/" component={Page1} />
+            <Route path="/rate" component={Page2} />
+            <Route path="/final" component={Page3} />
+            {/* <Page1 />
             <Page2 />
-            <Page3 />
+            <Page3 /> */}
           </div>
+        </Router>
       )
     } else {
       return <div>Loading ...</div>

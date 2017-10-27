@@ -22,6 +22,7 @@ class Page2 extends Component {
     }
 
     render() {
+        console.log('render page2')
         const name = this.selectClassName()
         return (
             <div className={`${styles.page2} ${styles[name]}`}>
