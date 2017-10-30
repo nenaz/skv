@@ -24,6 +24,10 @@ body {
 .appElem .page1.left100 {
   transform: translate3d(-100%, 0, 0);
 }
+.appElem .page2 {
+  background-color: white;
+  height: 100%;
+}
 .appElem .page2.right100 {
   transform: translate3d(100%, 0, 0);
 }

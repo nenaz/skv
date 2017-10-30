@@ -3,8 +3,7 @@ import CustomInput from './CustomInput'
 import CustomButton from './CustomButton'
 import CustomInfoBlock from './CustomInfoBlock'
 import {connect} from 'react-redux'
-import {changeInputValue, changePage} from '../../AC'
-// import {Link} from 'react-router-dom'
+import {changeInputValue, changePage, toggleLoader} from '../../AC'
 
 class CustomBlock extends Component {
     constructor(props) {
@@ -19,7 +18,11 @@ class CustomBlock extends Component {
     }
 
     handleButtonClick(e) {
-        this.props.changePage(2)
+        const me = this
+        this.props.toggleLoader()
+        setTimeout(() => {
+            me.props.changePage(2)
+        },640)
     }
 
     render() {
@@ -39,6 +42,6 @@ function mapStateToProps(state) {
     }
 }
 
-const mapDispatch = {changeInputValue, changePage}
+const mapDispatch = {changeInputValue, changePage, toggleLoader}
 
 export default connect(mapStateToProps, mapDispatch)(CustomBlock)

@@ -9,6 +9,7 @@ import {changeRates, changeAccountsList} from '../AC'
 import {connect} from 'react-redux'
 import {wsConnect} from '../AC'
 import {HashRouter as Router, Route} from 'react-router-dom'
+import Loader from './Loader'
 
 // import {HashRouter as Router, Route} from 'react-router-dom'
 
@@ -99,9 +100,7 @@ class App extends Component {
             <Route path="/" component={Page1} />
             <Route path="/rate" component={Page2} />
             <Route path="/final" component={Page3} />
-            {/* <Page1 />
-            <Page2 />
-            <Page3 /> */}
+            <Loader />
           </div>
         </Router>
       )

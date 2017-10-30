@@ -8,6 +8,7 @@ import changeAccountTo from './changeAccountTo'
 import changePage from './changePage'
 import accountsList from './accountsList'
 import wsConnect from './wsconnect'
+import toggleLoader from './toggleLoader'
 
 export default combineReducers({
     count: counterReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
     changeAccountTo,
     changePage,
     accountsList,
-    wsConnect       
+    wsConnect,
+    toggleLoader
 })
