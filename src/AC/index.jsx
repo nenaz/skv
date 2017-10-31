@@ -8,7 +8,8 @@ import {
     CHANGEPAGE,
     WSCONNECT,
     CHANGEACCOUNTSLIST,
-    TOGGLELOADER
+    TOGGLELOADER,
+    CHANGEONERATE
 } from '../js/consts'
 
 export function increment() {
@@ -75,5 +76,12 @@ export function changeAccountsList(value) {
 export function toggleLoader() {
     return {
         type: TOGGLELOADER
+    }
+}
+
+export function changeOneRate(value) {
+    return {
+        type: CHANGEONERATE,
+        payload: value
     }
 }

@@ -196,6 +196,32 @@ const initialValueForAccounts = (accounts) => {
     }
 }
 
+const updateRate = (oldRate, newRate, type) => {
+    // debugger
+    let newR = (type) ? newRate.a : newRate.b,
+        oldR = (type) ? oldRate.a : oldRate.b,
+        bitmask = {},
+        defference = (parseFloat(newR) - parseFloat(oldR)).toFixed(4) > 0,
+        trueUpd = false
+    const or = oldR.split('')
+    const nr = newR.split('')
+
+    bitmask = or.map((item, key) => {
+        let className
+        if (nr[key] === item && !trueUpd) {
+            className = 'neutral'
+        } else {
+            trueUpd = true
+            className = (defference) ? 'greenRate' : 'redRate'
+        }
+        return {
+            value: nr[key],
+            key,
+            className
+        }
+    })
+    return bitmask
+}
 
 var utils = {
     account2format: account2format,
@@ -204,7 +230,8 @@ var utils = {
     num2format: num2format,
     toDigits: toDigits,
     initialValueForAccounts: initialValueForAccounts,
-    findAcctObject: findAcctObject
+    findAcctObject: findAcctObject,
+    updateRate
 }
 
 export default utils

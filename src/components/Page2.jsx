@@ -25,6 +25,12 @@ class Page2 extends Component {
 
     componentWillMount() {
         this.props.wsConnect.refreshers[0].stop();
+        this.props.wsConnect.sendMessage('SubRate', {
+            client: "2041234",
+            sym: "USD/RUB",
+            s: 574,
+            cur: "RUB"
+        });
         console.log('componentWillMount page2')
         this.setState({name: 'right100'})
     }

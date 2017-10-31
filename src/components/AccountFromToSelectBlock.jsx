@@ -25,20 +25,30 @@ class AccountFromToSelectBlock extends Component {
     selectAccount(e) {
         const actualAcctObject = Utils.findAcctObject(this.props.accountList, e.target.closest('li').getAttribute('data-acct'))
         if (this.state.initiator) {
-            this.props.changeAccountFrom(actualAcctObject);
+            this.props.changeAccountFrom(actualAcctObject)
         } else {
             this.props.changeAccountTo(actualAcctObject)
         }
         this.handleFilterToggle()
     }
 
+    componentWillMount() {
+        console.log('componentWillMount')
+        this.acctObj = Utils.initialValueForAccounts(this.props.accountList)
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount')
+        this.props.changeAccountFrom(this.acctObj.accountFrom)
+        this.props.changeAccountTo(this.acctObj.accountTo)
+    }
+
     render() {
         console.log('render accounts block')
-        const acctObj = Utils.initialValueForAccounts(this.props.accountList)
         return (
             <div>
-                <AccountFromToBlock account={this.props.accountFrom || acctObj.accountFrom} title="Списать со счета" handleFilterToggle={this.handleFilterToggle} initiator={true} />
-                <AccountFromToBlock account={this.props.accountTo || acctObj.accountTo} title="Зачислить на счет" handleFilterToggle={this.handleFilterToggle} initiator={false} />
+                <AccountFromToBlock account={this.props.accountFrom || this.acctObj.accountFrom} title="Списать со счета" handleFilterToggle={this.handleFilterToggle} initiator={true} />
+                <AccountFromToBlock account={this.props.accountTo || this.acctObj.accountTo} title="Зачислить на счет" handleFilterToggle={this.handleFilterToggle} initiator={false} />
                 <SelectAccountList accountList={this.props.accountList} filterClose={(this.state.filterClose) ? 'goDown100' : '_'} handleFilterToggle={this.handleFilterToggle} selectAccount={this.selectAccount} />
             </div>
         )

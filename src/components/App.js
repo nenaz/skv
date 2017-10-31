@@ -5,9 +5,8 @@ import Page3 from './Page3'
 import styles from '../css/App.css'
 import Socket from '../js/socket'
 import {TESTACCOUNT} from '../js/consts'
-import {changeRates, changeAccountsList} from '../AC'
+import {changeRates, changeAccountsList, changeOneRate, wsConnect} from '../AC'
 import {connect} from 'react-redux'
-import {wsConnect} from '../AC'
 import {HashRouter as Router, Route} from 'react-router-dom'
 import Loader from './Loader'
 
@@ -74,6 +73,8 @@ class App extends Component {
         case 'Accounts': this.props.changeAccountsList(data[1].accounts)
           this.setState({haveAccounts: true})
           break
+        case 'SubRate': this.props.changeOneRate(data[1])
+          break
         default: console.log('default')
       }
   }
@@ -113,5 +114,6 @@ class App extends Component {
 export default connect(null,{
   changeRates,
   changeAccountsList,
+  changeOneRate,
   wsConnect
 })(App)

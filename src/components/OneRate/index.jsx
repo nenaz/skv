@@ -1,22 +1,34 @@
 import React, {Component} from 'react'
 import styles from './css/OneRate.css'
+import {connect} from 'react-redux'
+import Utils from '../../js/utils'
+import Span from '../Span'
 
 class OneRateIndex extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {}
+        this.rate = []
+    }
+
+    componentWillUpdate(nextProps) {
+        this.rate = Utils.updateRate(this.props.oneRate, nextProps.oneRate, true)
+    }
+
     render(){
+        console.log('render')
         return(
             <div className={styles["big-title"]}>
                 <p className={styles["apply-title"]}>Вы покупаете доллары за рубли</p>
                 <div className={styles["apply-rate"]}>
                     <div className={styles["blockUpdateRate"]}>
-                        <span className={styles["neutral"]}>6</span>
-                        <span className={styles["neutral"]}>5</span>
-                        <span className={styles["neutral"]}>,</span>
-                        <span className={styles["redRate"]}>1</span>
-                        <span className={styles["redRate"]}>9</span>
-                        <span className={styles["redRate"]}>3</span>
-                        <span className={`${styles["neutral"]} ${styles["hidden"]}`}>0</span>
-                        <span className={`${styles["neutral"]} ${styles["hidden"]}`}>0</span>
-                        <span className={`${styles["{styles[neutral"]} ${styles["hidden"]}`}>0</span>
+                        {
+                            this.rate.map((item, key) => {
+                                return (
+                                    <Span key={item.key} listClassName={item.className} currencyName={item.value} />
+                                )
+                            })
+                        }
                     </div>
                     <i className={`${styles["neutral"]} ${styles["ccArrow"]} ${styles["dpIcons"]}`}></i>
                 </div>
@@ -30,4 +42,8 @@ class OneRateIndex extends Component {
     }
 }
 
-export default OneRateIndex
+export default connect(state => ({
+    oneRate: state.changeOneRate,
+    accountFrom: state.changeAccountFrom,
+    accountTo: state.changeAccountTo
+}))(OneRateIndex)
