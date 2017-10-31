@@ -15,8 +15,14 @@ class OneRateIndex extends Component {
         this.rate = Utils.updateRate(this.props.oneRate, nextProps.oneRate, true)
     }
 
+    calcSumm() {
+        return (this.props.selectedButton) ? (this.props.inputValue * this.props.oneRate.a).toFixed(2) : (this.props.inputValue / this.props.oneRate.a).toFixed(2)
+    }
+
     render(){
         console.log('render')
+        // let amount = Utils.num2format(this.calcSumm())
+        let amount = {__html: Utils.amount2Format(this.calcSumm(), 'RUB', ',', true)}
         return(
             <div className={styles["big-title"]}>
                 <p className={styles["apply-title"]}>Вы покупаете доллары за рубли</p>
@@ -34,8 +40,8 @@ class OneRateIndex extends Component {
                 </div>
                 <p className={`${styles["apply-description"]} ${styles["description1"]}`}>рублей за 1 доллар</p>
                 <p className={`${styles["apply-description"]} ${styles["description2"]}`}>
-                    <span className={styles["description2-text1"]}>На счёт будет зачислено</span> 
-                    <span className={styles["description2-text2"]}>1<span className={`${styles["ccA2F"]} ${styles["USD"]}`}>,47 </span></span>
+                    <span className={styles["description2-text1"]}>На счёт будет зачислено </span> 
+                    <span className={styles["description2-text2"]} dangerouslySetInnerHTML={amount} />
                 </p>
             </div>
         )
@@ -44,6 +50,6 @@ class OneRateIndex extends Component {
 
 export default connect(state => ({
     oneRate: state.changeOneRate,
-    accountFrom: state.changeAccountFrom,
-    accountTo: state.changeAccountTo
+    selectedButton: state.selectedButton,
+    inputValue: state.inputValue
 }))(OneRateIndex)

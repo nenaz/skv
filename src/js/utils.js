@@ -215,13 +215,40 @@ const updateRate = (oldRate, newRate, type) => {
             className = (defference) ? 'greenRate' : 'redRate'
         }
         return {
-            value: nr[key],
+            value: (nr[key] === '.') ? ',' : nr[key],
             key,
             className
         }
     })
     return bitmask
 }
+
+const amount2Format = (str, currency, separator, flat, floatCount) => {
+    if (!str) {
+        str = 0;
+    }
+    var string = str.toString().split(' ').join('').split(' ').join('').split(',').join('.'),
+        amount = parseFloat(string),
+        floatNumber = floatCount >= 0 ? floatCount : 2,
+        fraction,
+        split,
+        negative = amount < 0 ? '-' : ''
+
+    currency = (currency === "РУБ") ? "RUB" : currency;
+    separator = separator || ' ';
+    if (isNaN(amount)) {
+        return '';
+    } else {
+        amount = amount.toFixed(floatNumber);
+        string = amount + '';
+    }
+    if (negative) {
+        string = string.substring(1, string.length);
+    }
+    split = string.split('.');
+    fraction = split[1] ? (flat ? '<span class="ccA2F ' + currency + '">' : '<small class="' + currency + '">') + separator + split[1] + (flat ? '&thinsp;</span>' : '&thinsp;</small>') : '';
+    return (negative + split[0].split(/(?=(?:\d{3})+(?!\d))/).join(' ') + fraction).trim();
+};
 
 var utils = {
     account2format: account2format,
@@ -231,7 +258,8 @@ var utils = {
     toDigits: toDigits,
     initialValueForAccounts: initialValueForAccounts,
     findAcctObject: findAcctObject,
-    updateRate
+    updateRate,
+    amount2Format
 }
 
 export default utils

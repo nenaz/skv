@@ -3,6 +3,8 @@ import HeadTitle from '../HeadTitle'
 import styles from './css/InfoBeforeFinish.css'
 import {connect} from 'react-redux'
 import Utils from '../../js/utils'
+import Buttons from './Buttons'
+import HoldInfoBlock from './HoldInfoBlock'
 
 class InfoBlock extends Component {
     constructor(props) {
@@ -14,6 +16,7 @@ class InfoBlock extends Component {
         console.log(this.props)
         let accountF = {__html: (this.props.accountFrom) ? Utils.account2format(this.props.accountFrom.id) : ''}
         let accountT = {__html: (this.props.accountTo) ? Utils.account2format(this.props.accountTo.id) : ''}
+        let amount = {__html: Utils.amount2Format(this.props.inputValue, 'RUB', ',', true)}
         return (
             <div id="block">
                 <HeadTitle title="Детали" />
@@ -23,22 +26,13 @@ class InfoBlock extends Component {
                             <p className="aplly-company">Компания: <span>ЗАО "Пропан-трейдинг"</span></p>
                             <p className="apply-account-from">Со счета: <span dangerouslySetInnerHTML={accountF}></span></p>                            
                             <p className="apply-account-to">На счет: <span dangerouslySetInnerHTML={accountT}></span></p>
-                            <p className="apply-amount"><span>Сумма списания: </span><span>96<span className="ccA2F RUB">,00 </span></span></p>
+                            <p className="apply-amount">Сумма списания: <span dangerouslySetInnerHTML={amount}/></p>
                         </div>
                     </div>
                 </div>
                 <HeadTitle title="Как только Вас устроит курс, нажмите на кнопку Купить" />
-                <div className="holdExpectation" >
-                    <div className="dpMainSvgContainer"></div>
-                    <div className="message-text-apply message-text-apply-1">
-                        <span>Мы резервируем нужную сумму</span>
-                    </div>
-                    <div className="message-text-apply message-text-apply-2">
-                        <span>Это может занять 2-3 минуты</span>
-                        <div>Не закрывайте эту страницу</div>
-                        <span>После этого Вы сможете осуществить операцию по самому подходящему курсу.</span>
-                    </div>
-                </div>
+                <Buttons />
+                <HoldInfoBlock />
             </div>
         )
     }
@@ -46,5 +40,6 @@ class InfoBlock extends Component {
 
 export default connect(state => ({
     accountFrom: state.changeAccountFrom,
-    accountTo: state.changeAccountTo
+    accountTo: state.changeAccountTo,
+    inputValue: state.inputValue
 }))(InfoBlock)

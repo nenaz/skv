@@ -5,6 +5,9 @@
   width: 100%;
   background-color: #3b7fbb;
 }
+.big-title p {
+  margin-bottom: 0;
+}
 .big-title .apply-title {
   color: #fff;
   font-size: 20px;

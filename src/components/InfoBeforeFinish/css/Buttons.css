@@ -1,0 +1,39 @@
+.ccActionButtons {
+  color: #666;
+  border-width: 1px 0;
+  padding: 16px 25px 3.5px;
+  padding-top: 0;
+  z-index: 11;
+  border-bottom: 0 solid;
+  opacity: 1;
+  transition: transform 400ms linear;
+  background-color: #f0f0f0;
+}
+.ccActionButtons .ccButtonsBlock {
+  padding: 9px 10px;
+  display: flex;
+  flex-flow: inherit;
+  justify-content: center;
+}
+.ccActionButtons .ccButtonsBlock .action {
+  font-size: 16px;
+  line-height: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  transition: background-color 0.15s linear, color 0.15s linear;
+  cursor: pointer;
+  flex-grow: 2;
+  border-radius: 7px;
+  color: white;
+}
+.ccActionButtons .ccButtonsBlock .actionClose {
+  background-color: #ff3b30;
+  margin-right: 1%;
+}
+.ccActionButtons .ccButtonsBlock .actionApply {
+  background-color: #26ba79;
+  margin-left: 1%;
+}
