@@ -4,7 +4,7 @@ import InfoBeforeFinish from './InfoBeforeFinish'
 import PageTitle from './PageTitle'
 import styles from '../css/App.css'
 import {connect} from 'react-redux'
-import {toggleLoader} from '../AC'
+import {toggleLoader, changePage} from '../AC'
 
 class Page2 extends Component {
     constructor(props) {
@@ -31,13 +31,13 @@ class Page2 extends Component {
             s: 574,
             cur: "RUB"
         });
-        console.log('componentWillMount page2')
+        // console.log('componentWillMount page2')
         this.setState({name: 'right100'})
     }
 
     componentDidMount() {
         const me = this
-        console.log('componentDidMount page2')
+        // console.log('componentDidMount page2')
         setTimeout(() => {
             me.setState({name: ''})
         }, 600)
@@ -46,8 +46,27 @@ class Page2 extends Component {
         }, 1200)
     }
 
+    componentWillUnmount() {
+        console.log('componentWillUnmount')
+        this.props.toggleLoader()
+        this.props.wsConnect.sendMessage('UnSubRate', {})
+        this.props.changePage(1)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps')
+    }
+    
+    componentWillUpdate() {
+        console.log('componentWillUpdate')
+    }
+    
+    componentDidUpdate() {
+        console.log('componentDidUpdate')
+    }
+
     render() {
-        console.log('render page2')
+        // console.log('render page2')
         // const name = this.selectClassName()
         return (
             <div className={`${styles.page2} ${styles[this.state.name]}`}>
@@ -63,4 +82,4 @@ export default connect(state => ({
   changePage: state.changePage,
   wsConnect: state.wsConnect,
   toggleLoader: state.toggleLoader
-}),{toggleLoader})(Page2)
+}),{toggleLoader, changePage})(Page2)

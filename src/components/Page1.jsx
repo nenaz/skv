@@ -13,6 +13,18 @@ class Page1 extends Component {
         super(props)
         this.state = {}
     }
+    
+    componentWillMount() {
+        console.log(' page 1 componentWiiMount')
+    }
+
+    componentDidMount() {
+        console.log(' page 1 componentDidMount')
+    }
+
+    componentWillUnmount() {
+        console.log('page 1 componentWillUnmount')
+    }
 
     render() {
         return (

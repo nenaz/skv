@@ -5,7 +5,7 @@ import Page3 from './Page3'
 import styles from '../css/App.css'
 import Socket from '../js/socket'
 import {TESTACCOUNT} from '../js/consts'
-import {changeRates, changeAccountsList, changeOneRate, wsConnect} from '../AC'
+import {changeRates, changeAccountsList, changeOneRate, wsConnect, toggleLoader} from '../AC'
 import {connect} from 'react-redux'
 import {HashRouter as Router, Route} from 'react-router-dom'
 import Loader from './Loader'
@@ -75,6 +75,9 @@ class App extends Component {
           break
         case 'SubRate': this.props.changeOneRate(data[1])
           break
+        case 'UnSubRate': this.ws.wsEnableRefreshers()
+          this.props.toggleLoader()
+          break
         default: console.log('default')
       }
   }
@@ -115,5 +118,6 @@ export default connect(null,{
   changeRates,
   changeAccountsList,
   changeOneRate,
-  wsConnect
+  wsConnect,
+  toggleLoader
 })(App)
