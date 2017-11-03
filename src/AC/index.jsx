@@ -9,7 +9,8 @@ import {
     WSCONNECT,
     CHANGEACCOUNTSLIST,
     TOGGLELOADER,
-    CHANGEONERATE
+    CHANGEONERATE,
+    STARTANIMATION
 } from '../js/consts'
 
 export function increment() {
@@ -82,6 +83,13 @@ export function toggleLoader() {
 export function changeOneRate(value) {
     return {
         type: CHANGEONERATE,
+        payload: value
+    }
+}
+
+export function startAnimation(value) {
+    return {
+        type: STARTANIMATION,
         payload: value
     }
 }

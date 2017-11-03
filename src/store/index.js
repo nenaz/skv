@@ -3,7 +3,7 @@ import reducer from '../reducer'
 import logger from '../middlewares/logger'
 import updateRate from '../middlewares/updateOneRate'
 
-const enhancer = applyMiddleware(logger)
+const enhancer = applyMiddleware(updateRate, logger)
 const store = createStore(reducer, {}, enhancer)
 
 //dev only

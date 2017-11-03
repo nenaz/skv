@@ -10,6 +10,7 @@ import accountsList from './accountsList'
 import wsConnect from './wsconnect'
 import toggleLoader from './toggleLoader'
 import changeOneRate from './changeOneRate'
+import startAnimation from './startAnimation'
 
 export default combineReducers({
     count: counterReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
     accountsList,
     wsConnect,
     toggleLoader,
-    changeOneRate
+    changeOneRate,
+    startAnimation
 })

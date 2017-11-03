@@ -25,6 +25,10 @@ class CustomBlock extends Component {
         },640)
     }
 
+    componentDidMount() {
+        debugger
+    }
+
     render() {
         return (
             <div>

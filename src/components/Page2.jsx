@@ -4,7 +4,7 @@ import InfoBeforeFinish from './InfoBeforeFinish'
 import PageTitle from './PageTitle'
 import styles from '../css/App.css'
 import {connect} from 'react-redux'
-import {toggleLoader, changePage} from '../AC'
+import {toggleLoader, changePage, startAnimation} from '../AC'
 
 class Page2 extends Component {
     constructor(props) {
@@ -48,9 +48,10 @@ class Page2 extends Component {
 
     componentWillUnmount() {
         console.log('componentWillUnmount')
-        this.props.toggleLoader()
-        this.props.wsConnect.sendMessage('UnSubRate', {})
-        this.props.changePage(1)
+        // this.props.toggleLoader()
+        // this.props.wsConnect.sendMessage('UnSubRate', {})
+        this.props.startAnimation(true)
+        // this.props.changePage(1)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -69,7 +70,7 @@ class Page2 extends Component {
         // console.log('render page2')
         // const name = this.selectClassName()
         return (
-            <div className={`${styles.page2} ${styles[this.state.name]}`}>
+            <div className={`${styles.page2} ${styles[this.state.name]}`} ref={(div) => {this.divPage2 = div}}>
               <PageTitle title="Выберите курс " />
               <OneRate />
               <InfoBeforeFinish />
@@ -82,4 +83,4 @@ export default connect(state => ({
   changePage: state.changePage,
   wsConnect: state.wsConnect,
   toggleLoader: state.toggleLoader
-}),{toggleLoader, changePage})(Page2)
+}),{toggleLoader, changePage, startAnimation})(Page2)
