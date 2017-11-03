@@ -10,7 +10,7 @@ class Page2 extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: ''
+            name: 'right100'
         }
         // this.name = ''
     }
@@ -23,28 +23,40 @@ class Page2 extends Component {
     //     }
     // }
 
-    componentWillMount() {
-        this.props.wsConnect.refreshers[0].stop();
-        this.props.wsConnect.sendMessage('SubRate', {
-            client: "2041234",
-            sym: "USD/RUB",
-            s: 574,
-            cur: "RUB"
-        });
-        console.log('componentWillMount page2')
-        this.setState({name: 'right100'})
-    }
+    // componentWillMount() {
+    //     this.props.wsConnect.refreshers[0].stop();
+    //     this.props.wsConnect.sendMessage('SubRate', {
+    //         client: "2041234",
+    //         sym: "USD/RUB",
+    //         s: 574,
+    //         cur: "RUB"
+    //     });
+    //     console.log('componentWillMount page2')
+    //     this.setState({name: 'right100'})
+    // }
 
-    componentDidMount() {
+    componentWillReceiveProps() {
+        console.log('page 2 componentWillReceiveProps')
         const me = this
-        console.log('componentDidMount page2')
+        // console.log('componentDidMount page2')
         setTimeout(() => {
             me.setState({name: ''})
         }, 600)
-        setTimeout(() => {
-            me.props.toggleLoader()
-        }, 1200)
+        // setTimeout(() => {
+        //     me.props.toggleLoader()
+        // }, 1200)
     }
+
+    // componentDidMount() {
+    //     const me = this
+    //     console.log('componentDidMount page2')
+    //     setTimeout(() => {
+    //         me.setState({name: ''})
+    //     }, 600)
+    //     setTimeout(() => {
+    //         me.props.toggleLoader()
+    //     }, 1200)
+    // }
 
     render() {
         console.log('render page2')

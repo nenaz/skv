@@ -7,7 +7,7 @@ import Socket from '../js/socket'
 import {TESTACCOUNT} from '../js/consts'
 import {changeRates, changeAccountsList, changeOneRate, wsConnect} from '../AC'
 import {connect} from 'react-redux'
-import {HashRouter as Router, Route} from 'react-router-dom'
+// import {HashRouter as Router, Route} from 'react-router-dom'
 import Loader from './Loader'
 
 // import {HashRouter as Router, Route} from 'react-router-dom'
@@ -96,14 +96,17 @@ class App extends Component {
     // if (this.state.accountList && this.props.rates.length) {
     if (this.state.connection && this.state.haveAccounts && this.state.haveRates) {
       return (
-        <Router>
+        // <Router>
           <div className={styles.appElem}>
-            <Route path="/" component={Page1} />
+            {/* <Route path="/" component={Page1} />
             <Route path="/rate" component={Page2} />
-            <Route path="/final" component={Page3} />
+            <Route path="/final" component={Page3} /> */}
+            <Page1 />
+            <Page2 />
+            <Page3 />
             <Loader />
           </div>
-        </Router>
+        // </Router>
       )
     } else {
       return <div>Loading ...</div>
