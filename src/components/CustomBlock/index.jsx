@@ -25,9 +25,7 @@ class CustomBlock extends Component {
         },640)
     }
 
-    componentDidMount() {
-        debugger
-    }
+    componentDidMount() {}
 
     render() {
         return (
