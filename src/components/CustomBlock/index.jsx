@@ -10,19 +10,10 @@ class CustomBlock extends Component {
         super(props)
 
         this.inputChangeHandler = this.inputChangeHandler.bind(this)
-        this.handleButtonClick = this.handleButtonClick.bind(this)
     }
 
     inputChangeHandler = (e) => {
         this.props.changeInputValue(e.target.value)
-    }
-
-    handleButtonClick(e) {
-        const me = this
-        this.props.toggleLoader()
-        setTimeout(() => {
-            me.props.changePage(2)
-        },640)
     }
 
     componentDidMount() {}
@@ -32,18 +23,15 @@ class CustomBlock extends Component {
             <div>
                 <CustomInput inputChangeHandler={this.inputChangeHandler} />
                 <CustomInfoBlock rates={this.props.rates} />
-                <CustomButton active={(this.props.inputValue) ? 'active' : ''} handleButtonClick={this.handleButtonClick}/>
+                <CustomButton active={(this.props.inputValue) ? 'active' : ''} handleButtonClick={this.props.handleButtonClick}/>
             </div>
         )
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        inputValue: state.inputValue
-    }
-}
-
-const mapDispatch = {changeInputValue, changePage, toggleLoader}
-
-export default connect(mapStateToProps, mapDispatch)(CustomBlock)
+export default connect(state => ({
+    wsConnect: state.wsConnect,
+    inputValue: state.inputValue
+}), {
+    changeInputValue, changePage, toggleLoader
+})(CustomBlock)

@@ -6,12 +6,25 @@ import CustomBlock from './CustomBlock'
 import PageTitle from './PageTitle'
 import styles from '../css/App.css'
 import {connect} from 'react-redux'
+import { toggleLoader } from '../AC'
 
 
 class Page1 extends Component {
     constructor(props) {
         super(props)
         this.state = {}
+
+        this.handleButtonClick = this.handleButtonClick.bind(this)
+    }
+
+    handleButtonClick(e) {
+        const ddd = new Date()
+        this.props.toggleLoader()
+        this.props.wsConnect.sendMessage('Hold', {
+            requestId: ddd.getTime(),
+            id: this.props.accountFrom.id,
+            hold: this.props.inputValue * 1
+        })
     }
     
     componentWillMount() {
@@ -29,13 +42,12 @@ class Page1 extends Component {
     render() {
         console.log('page 1 render')
         return (
-            // <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "left100" : ""]}`}>
             <div className={`${styles.page1} `}>
               <PageTitle title="Конверсия онлайн" />
               <TableRatesBlock rates={this.props.rates}/>
               <AccountFromToSelectBlock />
               <SelectCurrencyBlock />
-              <CustomBlock rates={this.props.rates}/>
+              <CustomBlock rates={this.props.rates} handleButtonClick={this.handleButtonClick}/>
             </div>
         )
     }
@@ -43,5 +55,8 @@ class Page1 extends Component {
 
 export default connect(state => ({
   changePage: state.changePage,
-  rates: state.rates
-}))(Page1)
+  rates: state.rates,
+  accountFrom: state.changeAccountFrom,
+  inputValue: state.inputValue,
+  wsConnect: state.wsConnect
+}), { toggleLoader })(Page1)

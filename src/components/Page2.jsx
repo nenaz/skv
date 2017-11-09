@@ -9,9 +9,7 @@ import {toggleLoader, changePage, startAnimation} from '../AC'
 class Page2 extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            name: ''
-        }
+        this.state = {}
         this.nextpage = false
         
         this.handleButtonClickOk = this.handleButtonClickOk.bind(this)
@@ -21,14 +19,11 @@ class Page2 extends Component {
     handleButtonClickOk() {
         this.props.wsConnect.sendMessage('UnSubRate', {})
         this.props.toggleLoader()
-        // this.props.changePage(3)
         this.nextpage = true
     }
 
     handleTitleButtonClick() {
         this.props.wsConnect.sendMessage('UnSubRate', {})
-        this.setState({name: 'right100'})
-        // this.props.changePage(1)
         this.nextpage = false
         setTimeout(() => {
             window.history.back()
@@ -44,16 +39,10 @@ class Page2 extends Component {
             s: 574,
             cur: "RUB"
         });
-        // console.log('componentWillMount page2')
-        this.setState({name: 'right100'})
     }
 
     componentDidMount() {
         const me = this
-        // console.log('componentDidMount page2')
-        // setTimeout(() => {
-        //     me.setState({name: ''})
-        // }, 600)
         setTimeout(() => {
             me.props.toggleLoader()
         }, 1200)
@@ -84,10 +73,7 @@ class Page2 extends Component {
     }
 
     render() {
-        // console.log('render page2')
-        // const name = this.selectClassName()
         return (
-            // <div className={`${styles.page2} ${styles[this.state.name]}`} ref={(div) => {this.divPage2 = div}}>
             <div className={`${styles.page2}`} >
               <PageTitle title="Выберите курс " handleTitleButtonClick={this.handleTitleButtonClick} />
               <OneRate />

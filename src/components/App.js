@@ -5,11 +5,23 @@ import Page3 from './Page3'
 import styles from '../css/App.css'
 import Socket from '../js/socket'
 import {TESTACCOUNT} from '../js/consts'
-import {changeRates, changeAccountsList, changeOneRate, wsConnect, toggleLoader} from '../AC'
+import {
+  changeRates,
+  changeAccountsList,
+  changeOneRate,
+  wsConnect,
+  toggleLoader
+} from '../AC'
 import {connect} from 'react-redux'
-import { BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Link
+} from 'react-router-dom'
 import Loader from './Loader'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import createHistory from 'history/createBrowserHistory'
 
 const NavLink = (props) => (
   <li>
@@ -17,26 +29,9 @@ const NavLink = (props) => (
   </li>
 )
 
-const renderPage = ({ match: { params } }) => (
-  // switch (data.match.params.name) {
-  //   case 'rate': return <Page2 />
-  //   case 'final': return <Page3 />
-  //   default: return <Page1 />
-  // }
-  <div style={{
-    background: 'grey',
-    position: 'absolute',
-    display:'inline-block',
-    width: '200px',
-    left: 0,
-    /*right: 0,*/
-    top: '100px',
-    bottom: 0,
-    color: 'white',
-    paddingTop: '20px',
-    fontSize: '30px'
-  }}>hsl({params.name})</div>
-)
+const history = createHistory()
+
+
 
 class App extends Component {
   constructor(props) {
@@ -50,6 +45,7 @@ class App extends Component {
     }
 
     this.handleClickGetRate = this.handleClickGetRate.bind(this)
+    this.handleChangeRoter = this.handleChangeRoter.bind(this)
   }
 
   componentWillMount() {
@@ -90,8 +86,6 @@ class App extends Component {
   }
 
   wsOnMessageEvent(data) {
-    // console.log(this.props)
-    // debugger
       switch (data[0]) {
         case 'GetRate': this.props.changeRates(data[1])
           this.setState({haveRates: true})
@@ -126,45 +120,29 @@ class App extends Component {
       case 'final': return <Page3 />
       default: return <Page1 />
     }
-    // <div style={{
-    //   background: 'grey',
-    //   position: 'absolute',
-    //   display: 'inline-block',
-    //   width: '200px',
-    //   left: 0,
-    //   /*right: 0,*/
-    //   top: '100px',
-    //   bottom: 0,
-    //   color: 'white',
-    //   paddingTop: '20px',
-    //   fontSize: '30px'
-    // }}>hsl({params.name})</div>
+  }
+
+  handleChangeRoter() {
+    console.log('handleChangeRoter')
   }
 
   render() {
     console.log('render')
+    // console.log(history)
     // if (this.state.accountList && this.props.rates.length) {
     if (this.state.connection && this.state.haveAccounts && this.state.haveRates) {
       return (
-        // <Router>
-        //   <div className={styles.appElem}>
-        //     <Route path="/" component={Page1} />
-        //     <Route path="/rate" component={Page2} />
-        //     <Route path="/final" component={Page3} />
-        //     <Loader />
-        //   </div>
-        // </Router>
         <Router>
           <Route render={({location}) => (
             <div>
               <Route exact path="/" render={() => (
                 <Redirect to="/main" />
               )} />
-              <ul >
+              {/* <ul >
                 <NavLink to="/main">main</NavLink>
                 <NavLink to="/rate">rate</NavLink>
                 <NavLink to="/final">final</NavLink>
-              </ul>
+              </ul> */}
               <div className={styles.appElem}>
                 <ReactCSSTransitionGroup transitionName={{
                     'enter': styles['exp-enter'],
