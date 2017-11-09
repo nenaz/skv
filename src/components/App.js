@@ -7,10 +7,36 @@ import Socket from '../js/socket'
 import {TESTACCOUNT} from '../js/consts'
 import {changeRates, changeAccountsList, changeOneRate, wsConnect, toggleLoader} from '../AC'
 import {connect} from 'react-redux'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom'
 import Loader from './Loader'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
-// import {HashRouter as Router, Route} from 'react-router-dom'
+const NavLink = (props) => (
+  <li>
+    <Link {...props} />
+  </li>
+)
+
+const renderPage = ({ match: { params } }) => (
+  // switch (data.match.params.name) {
+  //   case 'rate': return <Page2 />
+  //   case 'final': return <Page3 />
+  //   default: return <Page1 />
+  // }
+  <div style={{
+    background: 'grey',
+    position: 'absolute',
+    display:'inline-block',
+    width: '200px',
+    left: 0,
+    /*right: 0,*/
+    top: '100px',
+    bottom: 0,
+    color: 'white',
+    paddingTop: '20px',
+    fontSize: '30px'
+  }}>hsl({params.name})</div>
+)
 
 class App extends Component {
   constructor(props) {
@@ -94,18 +120,70 @@ class App extends Component {
     this.ws.close()
   }
 
+  renderPage({ match: { params } }) {
+    switch (params.name) {
+      case 'rate': return <Page2 />
+      case 'final': return <Page3 />
+      default: return <Page1 />
+    }
+    // <div style={{
+    //   background: 'grey',
+    //   position: 'absolute',
+    //   display: 'inline-block',
+    //   width: '200px',
+    //   left: 0,
+    //   /*right: 0,*/
+    //   top: '100px',
+    //   bottom: 0,
+    //   color: 'white',
+    //   paddingTop: '20px',
+    //   fontSize: '30px'
+    // }}>hsl({params.name})</div>
+  }
+
   render() {
     console.log('render')
     // if (this.state.accountList && this.props.rates.length) {
     if (this.state.connection && this.state.haveAccounts && this.state.haveRates) {
       return (
+        // <Router>
+        //   <div className={styles.appElem}>
+        //     <Route path="/" component={Page1} />
+        //     <Route path="/rate" component={Page2} />
+        //     <Route path="/final" component={Page3} />
+        //     <Loader />
+        //   </div>
+        // </Router>
         <Router>
-          <div className={styles.appElem}>
-            <Route path="/" component={Page1} />
-            <Route path="/rate" component={Page2} />
-            <Route path="/final" component={Page3} />
-            <Loader />
-          </div>
+          <Route render={({location}) => (
+            <div>
+              <Route exact path="/" render={() => (
+                <Redirect to="/main" />
+              )} />
+              <ul >
+                <NavLink to="/main">main</NavLink>
+                <NavLink to="/rate">rate</NavLink>
+                <NavLink to="/final">final</NavLink>
+              </ul>
+              <div className={styles.appElem}>
+                <ReactCSSTransitionGroup transitionName={{
+                    'enter': styles['exp-enter'],
+                    'enterActive': styles['exp-enter-active'],
+                    'leave': styles['exp-leave'],
+                    'leaveActive': styles['exp-leave-active'],
+                  }}
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={500}>
+                  <Route
+                    location={location}
+                    key={location.key}
+                    path="/:name"
+                    component={this.renderPage}
+                  />
+                </ReactCSSTransitionGroup>
+              </div>
+            </div>
+          )}/>
         </Router>
       )
     } else {

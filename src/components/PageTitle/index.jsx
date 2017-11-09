@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import styles from './css/PageTitle.css'
 import {connect} from 'react-redux'
 import {changePage} from '../../AC'
+import {Link} from 'react-router-dom'
 
 class PageTitle extends Component {
     constructor(props) {
@@ -22,14 +23,20 @@ class PageTitle extends Component {
     }
 
     render() {
+        var spanEL
+        if (this.props.page === 2) {
+            spanEL = 
+                        <span className={`${styles["dpMenuBtn"]} ${styles["notifications"]} ${styles["icon"]}`} onClick={this.props.handleTitleButtonClick}>
+                            <span className={styles["ccNotices"]}></span>
+                            <span className={styles["dpNotices"]}>{this.props.page}</span>
+                        </span>
+                    
+        }
         return (
             <div className={styles["dpHeader"]}>
                 <div className={styles["dpHeaderLeftColumn"]}>
                     <div className={`${styles["ccHeaderTitle"]} ${styles["ccTitleMainPage"]} ${styles["off"]}`}>
-                        <span className={`${styles["dpMenuBtn"]} ${styles["notifications"]} ${styles["icon"]}`} onClick={this.handleLeftIconClick}>
-                            <span className={styles["ccNotices"]}></span>
-                            <span className={styles["dpNotices"]}>10</span>
-                        </span>
+                        {spanEL}
                         <h1 className={`${styles["dpHeaderTitle"]} ${styles["ccHeaderTitle"]}`}>{this.props.title}</h1>
                     </div>
                 </div>

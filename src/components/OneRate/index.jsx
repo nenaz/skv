@@ -20,7 +20,7 @@ class OneRateIndex extends Component {
     }
 
     render(){
-        console.log('render')
+        // console.log('render')
         // let amount = Utils.num2format(this.calcSumm())
         let amount = {__html: Utils.amount2Format(this.calcSumm(), 'RUB', ',', true)}
         return(

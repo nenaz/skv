@@ -13,7 +13,7 @@ class InfoBlock extends Component {
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         let accountF = {__html: (this.props.accountFrom) ? Utils.account2format(this.props.accountFrom.id) : ''}
         let accountT = {__html: (this.props.accountTo) ? Utils.account2format(this.props.accountTo.id) : ''}
         let amount = {__html: Utils.amount2Format(this.props.inputValue, 'RUB', ',', true)}
@@ -31,7 +31,7 @@ class InfoBlock extends Component {
                     </div>
                 </div>
                 <HeadTitle title="Как только Вас устроит курс, нажмите на кнопку Купить" />
-                <Buttons />
+                <Buttons handleButtonClickOk={this.props.handleButtonClickOk} />
                 <HoldInfoBlock />
             </div>
         )
@@ -41,5 +41,5 @@ class InfoBlock extends Component {
 export default connect(state => ({
     accountFrom: state.changeAccountFrom,
     accountTo: state.changeAccountTo,
-    inputValue: state.inputValue
+    inputValue: state.inputValue,
 }))(InfoBlock)

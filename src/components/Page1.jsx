@@ -15,20 +15,22 @@ class Page1 extends Component {
     }
     
     componentWillMount() {
-        console.log(' page 1 componentWiiMount')
+        // console.log(' page 1 componentWiiMount')
     }
 
     componentDidMount() {
-        console.log(' page 1 componentDidMount')
+        // console.log(' page 1 componentDidMount')
     }
 
     componentWillUnmount() {
-        console.log('page 1 componentWillUnmount')
+        // console.log('page 1 componentWillUnmount')
     }
 
     render() {
+        console.log('page 1 render')
         return (
-            <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "left100" : ""]}`}>
+            // <div className={`${styles.page1} ${styles[(this.props.changePage !== 1) ? "left100" : ""]}`}>
+            <div className={`${styles.page1} `}>
               <PageTitle title="Конверсия онлайн" />
               <TableRatesBlock rates={this.props.rates}/>
               <AccountFromToSelectBlock />
