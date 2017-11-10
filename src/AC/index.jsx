@@ -10,7 +10,8 @@ import {
     CHANGEACCOUNTSLIST,
     TOGGLELOADER,
     CHANGEONERATE,
-    STARTANIMATION
+    STARTANIMATION,
+    CHANGEHOLD
 } from '../js/consts'
 
 export function increment() {
@@ -90,6 +91,13 @@ export function changeOneRate(value) {
 export function startAnimation(value) {
     return {
         type: STARTANIMATION,
+        payload: value
+    }
+}
+
+export function changeHold(value) {
+    return {
+        type: CHANGEHOLD,
         payload: value
     }
 }

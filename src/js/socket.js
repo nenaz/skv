@@ -28,50 +28,6 @@ export default class WsSocket {
         wsReqArr[1] = paramObj.data
 
         this.refreshers.push(new wsRefresher(instance, 5000, true))
-
-        
-
-        // var data = (paramObj.withParameters) ? paramObj.data : {},
-        //     amount = page.manualAmountInput,
-        //     elemVis = true,
-        //     wsReqArr = [];
-        // wsReqArr[0] = paramObj.method;
-        // wsReqArr[1] = paramObj.data;
-        // if (paramObj.withParameters && paramObj.method === 'SubRate') {
-        //     if (page.indexSelButton) {
-        //         data.amountto = amount;
-        //     } else {
-        //         data.amountfrom = amount;
-        //     }
-        // }
-        // // page.wsRefreshers.push(new wsRefresher(wsGetStartRates.bind(page, wsReqArr), interval, true, page, elemVis));
-        // page.wsRefreshers.push(new wsRefresher(this.sendMessage.bind(page, page, paramObj.method, paramObj.data), interval, true, page, elemVis));
-        // window.wsRefreshers = page.wsRefreshers;
-        // page.wsEnableRefreshers = function() {
-        //     var i = 0;
-        //     for (i = wsRefreshers.length; i--;) {
-        //         page.wsRefreshers[i].start();
-        //     }
-        // };
-        // page.wsDisableRefreshers = function() {
-        //     var i = 0;
-        //     for (i = page.wsRefreshers.length; i--;) {
-        //         page.wsRefreshers[i].stop();
-        //     }
-        // };
-        // page.wsDestroyRefreshers = function() {
-        //     var i;
-        //     for (i = 0; i <= page.wsRefreshers.length; i++) {
-        //         page.wsRefreshers.shift();
-        //     }
-        // };
-        // page.wsEnableThisRefresher = function(num) {
-        //     page.wsRefreshers[num].start();
-        // };
-        // page.wsDisableThisRefresher = function(num) {
-        //     page.wsRefreshers[num].stop();
-        // };
-        // return page.wsRefreshers.length - 1;
     }
 
     wsEnableRefreshers() {

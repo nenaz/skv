@@ -73,6 +73,8 @@ class Page2 extends Component {
     }
 
     render() {
+        console.log('this.props.changeHold')
+        console.log(this.props.changeHold)
         return (
             <div className={`${styles.page2}`} >
               <PageTitle title="Выберите курс " handleTitleButtonClick={this.handleTitleButtonClick} />
@@ -86,5 +88,6 @@ class Page2 extends Component {
 export default connect(state => ({
   page: state.changePage,
   wsConnect: state.wsConnect,
-  toggleLoader: state.toggleLoader
+  toggleLoader: state.toggleLoader,
+  changeHold: state.changeHold
 }),{toggleLoader, changePage, startAnimation})(Page2)

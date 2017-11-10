@@ -10,7 +10,8 @@ import {
   changeAccountsList,
   changeOneRate,
   wsConnect,
-  toggleLoader
+  toggleLoader,
+  changeHold
 } from '../AC'
 import {connect} from 'react-redux'
 import {
@@ -57,6 +58,10 @@ class App extends Component {
       .then((connection) => {
         console.log('result')
         this.setState({connection: connection})
+        me.ws.sendMessage('Login', {
+          client: '2041111',
+          password: "1234567890"
+        })
         me.ws.newData = (e) => me.wsOnMessageEvent(JSON.parse(e.data))
         // debugger
         me.props.wsConnect(me.ws)
@@ -98,6 +103,11 @@ class App extends Component {
         case 'UnSubRate': this.ws.wsEnableRefreshers()
           this.props.toggleLoader()
           break
+        case 'Account': 
+          setTimeout(()=>{
+            this.props.changeHold(data[1])
+          },5000)
+          break;
         default: console.log('default')
       }
   }
@@ -175,5 +185,6 @@ export default connect(null,{
   changeAccountsList,
   changeOneRate,
   wsConnect,
-  toggleLoader
+  toggleLoader,
+  changeHold
 })(App)

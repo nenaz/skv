@@ -12,11 +12,6 @@ const CustomButton = (props) => {
     } else {
         return <span className={`${styles.ccMainTab}`}>Продолжить</span>
     }
-    // return (
-    //     <Link to>
-    //         <span className={`${styles.ccMainTab} ${styles[props.active]}`} onClick={(props.active) ? props.handleButtonClick : null}>Продолжить</span>
-    //     </Link>
-    // )
 }
 
 export default CustomButton

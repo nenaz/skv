@@ -11,6 +11,7 @@ import wsConnect from './wsconnect'
 import toggleLoader from './toggleLoader'
 import changeOneRate from './changeOneRate'
 import startAnimation from './startAnimation'
+import changeHold from './changeHold'
 
 export default combineReducers({
     count: counterReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
     wsConnect,
     toggleLoader,
     changeOneRate,
-    startAnimation
+    startAnimation,
+    changeHold
 })
