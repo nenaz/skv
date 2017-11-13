@@ -2,7 +2,6 @@
     .dpHeaderLeftColumn{
         min-width: 0;
         width: 100%;
-        padding: 0 12px 0;
         .ccHeaderTitle.ccTitleMainPage{
             display: table-cell;
             width: 50%;
@@ -40,12 +39,13 @@
                 width: 22px;
             }
             .dpHeaderTitle.ccHeaderTitle{
-                padding: 2.5px 0 0 0px;
+                padding: 2.5px 0 0 0;
                 font-size: 21px;
                 width: 50%;
                 transition: all 400ms;
                 display: inline-block;
                 min-width: 172px;
+                padding-left: 12px;
             }
         }
     }

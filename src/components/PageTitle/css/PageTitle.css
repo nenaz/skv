@@ -1,13 +1,14 @@
 .dpHeader .dpHeaderLeftColumn {
   min-width: 0;
   width: 100%;
-  padding: 0 12px 0;
 }
+
 .dpHeader .dpHeaderLeftColumn .ccHeaderTitle.ccTitleMainPage {
   display: table-cell;
   width: 50%;
   transition: all 400ms;
 }
+
 .dpHeader .dpHeaderLeftColumn .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications {
   min-height: 30px;
   display: inline-block;
@@ -15,9 +16,11 @@
   width: 60px;
   white-space: nowrap;
 }
+
 .dpHeader .dpHeaderLeftColumn .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications .ccNotices {
   display: inline-block;
 }
+
 .dpHeader .dpHeaderLeftColumn .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications .dpNotices {
   padding: 0px 6px;
   font-size: 14px;
@@ -28,6 +31,7 @@
   height: 18px;
   display: inline-block;
 }
+
 .dpHeader .dpHeaderLeftColumn .ccHeaderTitle.ccTitleMainPage .dpMenuBtn.notifications::before {
   display: inline-block;
   vertical-align: middle;
@@ -40,11 +44,16 @@
   font-size: 18.5px;
   width: 22px;
 }
+
 .dpHeader .dpHeaderLeftColumn .ccHeaderTitle.ccTitleMainPage .dpHeaderTitle.ccHeaderTitle {
-  padding: 2.5px 0 0 0px;
+  padding: 2.5px 0 0 0;
   font-size: 21px;
   width: 50%;
   transition: all 400ms;
   display: inline-block;
   min-width: 172px;
+  padding-left: 12px;
 }
+ 
+
+ /*# sourceMappingURL= PageTitle.css.map */

@@ -1,25 +1,42 @@
 .holdExpectation {
   top: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 55px);
+  background-color: transparent;
+  position: absolute;
+  top: 55px;
+}
+
+.holdExpectation .message-text-apply {
+  top: 211px;
+  font-size: 20px;
+  position: relative;
+  height: calc(100% - 211px);
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   background-color: #f0f0f0;
 }
-.holdExpectation .message-text-apply {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-}
+
 .holdExpectation .message-text-apply .message-text-apply-1 {
   top: 25%;
 }
+
 .holdExpectation .message-text-apply .message-text-apply-2 {
   top: 35%;
   color: #767676;
 }
+
 .holdExpectation .message-text-apply .spanT {
   padding: 0 15px 10px;
   display: inline-block;
 }
+
 .holdExpectation .message-text-apply .divT {
   padding: 0 15px 10px;
 }
+ 
+
+ /*# sourceMappingURL= WaitHold.css.map */

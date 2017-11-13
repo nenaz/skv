@@ -13,19 +13,21 @@
         display: flex;
         flex-flow: inherit;
         justify-content: center;
-        .action{
-            font-size: 16px;
-            line-height: 32px;
-            height: 32px;
-            border: 1px solid transparent;
-            text-align: center;
-            vertical-align: middle;
-            box-sizing: border-box;
-            transition: background-color .15s linear,color .15s linear;
-            cursor: pointer;
+        a{
             flex-grow: 2;
-            border-radius: 7px;
-            color: white;
+            .action{
+                font-size: 16px;
+                line-height: 32px;
+                height: 32px;
+                border: 1px solid transparent;
+                text-align: center;
+                vertical-align: middle;
+                box-sizing: border-box;
+                transition: background-color .15s linear,color .15s linear;
+                cursor: pointer;
+                border-radius: 7px;
+                color: white;
+            }
         }
         
         .actionClose{

@@ -4,10 +4,13 @@
   text-align: center;
   width: 100%;
   background-color: #3b7fbb;
+  min-height: 211px;
 }
+
 .big-title p {
-  margin-bottom: 0;
+  margin-bottom: 0px;
 }
+
 .big-title .apply-title {
   color: #fff;
   font-size: 20px;
@@ -15,6 +18,7 @@
   padding: 15px 0 0;
   margin: 0;
 }
+
 .big-title .apply-rate {
   font-size: 55px;
   line-height: 55px;
@@ -22,20 +26,25 @@
   padding-bottom: 0;
   position: relative;
 }
+
 .big-title .apply-rate .blockUpdateRate {
   padding-bottom: 0;
   font-size: 70px;
   display: inline-block;
 }
+
 .big-title .apply-rate .blockUpdateRate .neutral {
   color: #fff;
 }
+
 .big-title .apply-rate .blockUpdateRate .greenRate {
   color: #26ba79;
 }
+
 .big-title .apply-rate .blockUpdateRate .redRate {
   color: #ff5d5d;
 }
+
 .big-title .apply-rate .blockUpdateRate .neutral.ccArrow.dpIcons {
   font-size: 20px;
   transform: rotate(90deg);
@@ -45,14 +54,20 @@
   top: 67%;
   line-height: 0;
 }
+
 .big-title .apply-rate .blockUpdateRate .apply-description.description1 {
   padding: 22px 0 0;
-  color: #aac8df!important;
+  color: #aac8df !important;
 }
+
 .big-title .apply-rate .blockUpdateRate .apply-description.description2 {
   padding: 22px 0;
   color: #fff;
 }
+
 .big-title .apply-rate .blockUpdateRate .apply-description.description2 span {
   color: #fff;
 }
+ 
+
+ /*# sourceMappingURL= OneRate.css.map */

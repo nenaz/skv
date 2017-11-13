@@ -12,7 +12,9 @@ class Buttons extends Component {
         return(
             <div className={`${styles["ccActionButtons"]}`}>
                 <div className={`${styles["ccButtonsBlock"]}`}>
-                    <div className={`${styles["action"]} ${styles["actionClose"]}`}>Отказаться</div>
+                    <Link to="/main" style={{ textDecoration: 'none' }}>
+                        <div className={`${styles["action"]} ${styles["actionClose"]}`}>Отказаться</div>
+                    </Link>
                     <Link to="/final" style={{textDecoration: 'none'}}>
                         <div className={`${styles["action"]} ${styles["actionApply"]}`} onClick={this.props.handleButtonClickOk}>Купить</div>
                     </Link>
