@@ -12,6 +12,7 @@ import toggleLoader from './toggleLoader'
 import changeOneRate from './changeOneRate'
 import startAnimation from './startAnimation'
 import changeHold from './changeHold'
+import operStatus from './operStatus'
 
 export default combineReducers({
     count: counterReducer,
@@ -26,5 +27,6 @@ export default combineReducers({
     toggleLoader,
     changeOneRate,
     startAnimation,
-    changeHold
+    changeHold,
+    operStatus
 })

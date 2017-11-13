@@ -38,7 +38,7 @@ class InfoBlock extends Component {
                             <Buttons handleButtonClickOk={this.props.handleButtonClickOk} />
                             <HoldInfoBlock />
                         </div>
-        if (this.props.changeHold.hold) {
+        if (this.props.changeHold.holding) {
             return details
         } else {
             return <WaitHold />

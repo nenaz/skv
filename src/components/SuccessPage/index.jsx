@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import styles from './css/SuccessPage.css'
 import HeadTitle from '../HeadTitle'
 import { Link } from 'react-router-dom'
-import logo from './img/no-key-sign.png';
+import logo from './img/no-key-sign.png'
 
 class SuccessPage extends Component {
     constructor(props) {

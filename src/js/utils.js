@@ -250,6 +250,33 @@ const amount2Format = (str, currency, separator, flat, floatCount) => {
     return (negative + split[0].split(/(?=(?:\d{3})+(?!\d))/).join(' ') + fraction).trim();
 };
 
+const formatDate = (str) => {
+    return ('0' + str).slice(-2);
+};
+
+const generateDate = (returnObj) => {
+    let date,
+        d = new Date(),
+        nowD = formatDate(d.getDate()),
+        nowM,
+        nowY = d.getFullYear(),
+        nowH = formatDate(d.getHours()),
+        nowMin = formatDate(d.getMinutes()),
+        nowSec = formatDate(d.getSeconds());
+    const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+    nowM = (!!returnObj) ? formatDate(d.getMonth() + 1) : months[d.getMonth()];
+    // store.set('successOperTime', d.getTime());
+    if (returnObj) {
+        date = {
+            date: nowD + '.' + nowM + '.' + nowY,
+            time: nowH + ':' + nowMin + ':' + nowSec
+        };
+    } else {
+        date = nowD + ' ' + nowM + ' ' + nowY + ', ' + nowH + ':' + nowMin + ':' + nowSec;
+    }
+    return date;
+};
+
 var utils = {
     account2format: account2format,
     handleClickGetRate: handleClickGetRate,
@@ -259,7 +286,8 @@ var utils = {
     initialValueForAccounts: initialValueForAccounts,
     findAcctObject: findAcctObject,
     updateRate,
-    amount2Format
+    amount2Format,
+    generateDate
 }
 
 export default utils

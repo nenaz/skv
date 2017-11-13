@@ -11,7 +11,8 @@ import {
   changeOneRate,
   wsConnect,
   toggleLoader,
-  changeHold
+  changeHold,
+  operStatus
 } from '../AC'
 import {connect} from 'react-redux'
 import {
@@ -104,9 +105,15 @@ class App extends Component {
           this.props.toggleLoader()
           break
         case 'Account': 
+          data[1].holding = true;
           setTimeout(()=>{
             this.props.changeHold(data[1])
           },5000)
+          break;
+        case 'GetOrderStatus':
+          setTimeout(() => {
+            this.props.operStatus(data[1])
+          }, 3000);
           break;
         default: console.log('default')
       }
@@ -186,5 +193,6 @@ export default connect(null,{
   changeOneRate,
   wsConnect,
   toggleLoader,
-  changeHold
+  changeHold,
+  operStatus
 })(App)

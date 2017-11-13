@@ -11,6 +11,7 @@ export const TOGGLELOADER = 'TOGGLELOADER'
 export const CHANGEONERATE = 'CHANGEONERATE'
 export const STARTANIMATION = 'STARTANIMATION'
 export const CHANGEHOLD = 'CHANGEHOLD'
+export const OPERSTATUS = 'OPERSTATUS'
 
 export const TESTACCOUNT = '2041111'
 
@@ -18,3 +19,7 @@ export const strValues = {
     toAccountText: 'На счет будет зачислено',
     fromAccountText: 'Со счета будет списано'
 }
+
+export const STATUSSUCCESS = 'SUCCESS'
+export const STATUSREJECTED = 'REJECTED'
+export const STATUSPENDING = 'PENDING'

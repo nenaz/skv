@@ -11,7 +11,8 @@ import {
     TOGGLELOADER,
     CHANGEONERATE,
     STARTANIMATION,
-    CHANGEHOLD
+    CHANGEHOLD,
+    OPERSTATUS
 } from '../js/consts'
 
 export function increment() {
@@ -98,6 +99,13 @@ export function startAnimation(value) {
 export function changeHold(value) {
     return {
         type: CHANGEHOLD,
+        payload: value
+    }
+}
+
+export function operStatus(value) {
+    return {
+        type: OPERSTATUS,
         payload: value
     }
 }
