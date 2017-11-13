@@ -27,9 +27,12 @@
             position: relative;
             top: auto;
             .ccIconResultOperation.icon-free_extract{
-                width: 100%;
                 display: inline-block;
                 height: 97px;
+                background-repeat: no-repeat;
+                background-size: contain;
+                width: 97px;
+                background-image: url('../img/no-key-sign.png');
             }
             .ccTextPart{
                 display: inline-block;

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import styles from './css/SuccessPage.css'
 import HeadTitle from '../HeadTitle'
 import { Link } from 'react-router-dom'
+import logo from './img/no-key-sign.png';
 
 class SuccessPage extends Component {
     constructor(props) {
@@ -16,8 +17,10 @@ class SuccessPage extends Component {
                     <div className={`${styles["ccPart1"]}`} >
                         <span className="">08 ноября 2017, 10:33</span>
                     </div>
-                    <div className={`${styles["ccPart2"]}`}>
-                        <i className={`${styles['ccIconResultOperation']} ${styles['icon-free_extract']}`}></i>
+                    <div className={`${styles["ccPart2"]}`} >
+                        <i className={`${styles['ccIconResultOperation']} ${styles['icon-free_extract']}`} style={{
+                            backgroundImage: `url(${logo})`
+                        }}></i>
                         <span className={`${styles['ccTextPart']} ${styles['ccTextPart1']}`}>Операция совершена успешно</span>
                         <span className={`${styles['ccTextPart']} ${styles['ccTextPart2']}`}>Неизрасходованные средства будут возвращены обратно на счёт.</span>
                         <span className={`${styles['ccTextPart']} ${styles['ccTextPart3']}`} >Остатки обновятся в течение 2-3 минут.</span>
