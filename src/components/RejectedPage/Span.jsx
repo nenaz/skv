@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../css/Span.css'
+import styles from './css/RejectedPage.css'
 
 const Span = (props) => {
     return (

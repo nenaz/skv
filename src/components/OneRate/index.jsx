@@ -31,7 +31,7 @@ class OneRateIndex extends Component {
                         {
                             this.rate.map((item, key) => {
                                 return (
-                                    <Span key={item.key} listClassName={item.className} currencyName={item.value} />
+                                    <Span key={item.key} firstClassName={item.className} textValue={item.value} />
                                 )
                             })
                         }

@@ -33,10 +33,14 @@
   top: initial;
 }
 
-.ccSuccessPartsBlock.redRate .ccPart2 .ccIconResultOperation.icon-free_extract.icon-attention {
-  width: 100%;
+.ccSuccessPartsBlock.redRate .ccPart2 .ccIconResultOperation {
+  width: 140px;
   display: inline-block;
   margin-top: 15px;
+  background-image: url("../img/no-key-sign.png");
+  height: 140px;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart {
@@ -44,18 +48,18 @@
   width: 100%;
 }
 
-.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart .ccTextPart1 {
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart.ccTextPart1 {
   font-size: 26px;
   padding: 10px 0 10px;
 }
 
-.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart .ccTextPart2 {
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart.ccTextPart2 {
   padding: 0 30px;
   box-sizing: border-box;
   font-size: 18px;
 }
 
-.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart .ccTextPart3 {
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart.ccTextPart3 {
   padding: 0 30px;
   box-sizing: border-box;
   font-size: 18px;
