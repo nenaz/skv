@@ -1,0 +1,113 @@
+.ccSuccessPartsBlock{
+    position: relative;
+    font-size: 0px;
+    &.redRate{
+        background-color: #ff5d5d;
+        color: black;
+        padding-top: 33px;
+        .ccPart1{
+            height: 32px;
+            padding-top: 0;
+            font-size: 16px;
+            span{
+                font-family: 'whitney-book';
+                font-size: 21px;
+                color: white;
+                text-align: center;
+                display: inline-block;
+                width: 100%
+            }
+        }
+        .ccPart2{
+            color: white;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            top: initial;
+            .ccIconResultOperation.icon-free_extract.icon-attention{
+                width: 100%;
+                display: inline-block;
+                margin-top: 15px;
+            }
+            .ccTextPart{
+                display: inline-block;
+                width: 100%;
+                .ccTextPart1{
+                    font-size: 26px;
+                    padding: 10px 0 10px;
+                }
+                .ccTextPart2{
+                    padding: 0 30px;
+                    box-sizing: border-box;
+                    font-size: 18px;
+                }
+                .ccTextPart3{
+                    padding: 0 30px;
+                    box-sizing: border-box;
+                    font-size: 18px;
+                }
+            }
+        }
+        .ccPart3{
+            width: 100%;
+            background: white;
+            position: relative;
+            display: inline-block;
+            margin-top: 55%;
+            font-size: 20px;
+            padding: 0;
+            text-align: center;
+            margin-top: 20px;
+            &.ccError{
+                .ccListButton{
+                    border-bottom: 1px solid #d0dce4;
+                    .ccFooterBlockElem{
+                        line-height: 50px;
+                        // display: table;
+                        width: 100%;
+                        border-bottom: 0;
+                        height: 55px;
+                        // i{
+                        //     width: 100px;
+                        //     height: 100px;
+                        //     background-size: contain;
+                        //     background-repeat: no-repeat;
+                        //     background-image: url('../img/no-key-sign.png');
+                        // }
+                        display: flex;
+                        flex-direction: row;
+                        align-content: center;
+                        justify-content: center;
+                        // .icon-doc_currency{}
+                        // .icon-arrow-right{
+                        //     // display: table-cell;
+                        //     margin: 0;
+                        //     position: absolute;
+                        //     top: 9px;
+                        //     right: 7px;
+                        //     // width: auto;
+                        //     color: #cdcdcd;
+                        //     font-size: 20px;
+                        //     vertical-align: middle;
+                        //     line-height: 30px;
+                        // }
+                        // .icon-declined{}
+                        span{
+                            // display: table-cell;
+                            // width: 100%;
+                            text-align: left;
+                            font-size: 18px;
+                            line-height: 34px;
+                            vertical-align: middle;
+                            border-bottom: 1px solid #d0dce4;
+                        }
+                        .flex-item:nth-child(2){
+                            flex-grow: 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

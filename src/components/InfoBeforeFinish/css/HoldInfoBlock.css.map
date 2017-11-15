@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAA;EACZ,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "HoldInfoBlock.scss"
+    ],
+    "names": [],
+    "file": "HoldInfoBlock.css"
+}

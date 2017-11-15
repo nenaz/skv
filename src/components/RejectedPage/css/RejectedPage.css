@@ -1,0 +1,104 @@
+.ccSuccessPartsBlock {
+  position: relative;
+  font-size: 0px;
+}
+
+.ccSuccessPartsBlock.redRate {
+  background-color: #ff5d5d;
+  color: black;
+  padding-top: 33px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart1 {
+  height: 32px;
+  padding-top: 0;
+  font-size: 16px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart1 span {
+  font-family: 'whitney-book';
+  font-size: 21px;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart2 {
+  color: white;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top: initial;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart2 .ccIconResultOperation.icon-free_extract.icon-attention {
+  width: 100%;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart {
+  display: inline-block;
+  width: 100%;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart .ccTextPart1 {
+  font-size: 26px;
+  padding: 10px 0 10px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart .ccTextPart2 {
+  padding: 0 30px;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart2 .ccTextPart .ccTextPart3 {
+  padding: 0 30px;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart3 {
+  width: 100%;
+  background: white;
+  position: relative;
+  display: inline-block;
+  margin-top: 55%;
+  font-size: 20px;
+  padding: 0;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart3.ccError .ccListButton {
+  border-bottom: 1px solid #d0dce4;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart3.ccError .ccListButton .ccFooterBlockElem {
+  line-height: 50px;
+  width: 100%;
+  border-bottom: 0;
+  height: 55px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart3.ccError .ccListButton .ccFooterBlockElem span {
+  text-align: left;
+  font-size: 18px;
+  line-height: 34px;
+  vertical-align: middle;
+  border-bottom: 1px solid #d0dce4;
+}
+
+.ccSuccessPartsBlock.redRate .ccPart3.ccError .ccListButton .ccFooterBlockElem .flex-item:nth-child(2) {
+  flex-grow: 2;
+}
+ 
+
+ /*# sourceMappingURL= RejectedPage.css.map */

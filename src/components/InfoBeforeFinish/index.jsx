@@ -17,6 +17,8 @@ class InfoBlock extends Component {
         // debugger
     }
 
+    
+
     render() {
         console.log(this.props)
         let accountF = {__html: (this.props.accountFrom) ? Utils.account2format(this.props.accountFrom.id) : ''}

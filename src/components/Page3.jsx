@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PageTitle from './PageTitle'
-import SuccessPage from './SuccessPage'
+import SuccessBlock from './SuccessPage'
 import styles from '../css/App.css'
 import {connect} from 'react-redux'
 import { toggleLoader } from '../AC'
@@ -9,6 +9,7 @@ import {
     STATUSSUCCESS,
     STATUSREJECTED
 } from '../js/consts'
+import RejectedBlock from './RejectedPage'
 
 class Page3 extends Component {
     constructor(props) {
@@ -36,16 +37,23 @@ class Page3 extends Component {
     }
 
     render() {
-        let statusPage = ''
-        switch (this.props.operStatus.status) {
-            case STATUSSUCCESS: statusPage = <SuccessPage />
-                break;
-            default: statusPage = <SuccessPage />
-        }
+        // let statusPage = ''
+        // switch (this.props.operStatus.status) {
+        //     case STATUSSUCCESS: statusPage = <SuccessBlock />
+        //         break;
+        //     default: statusPage = <SuccessBlock />
+        // }
+        // return (
+        //     <div className={`${styles.page3}`}>
+        //         <PageTitle title="" />
+        //         {statusPage}
+        //     </div>
+        // )
         return (
-            <div className={`${styles.page3}`}>
-                <PageTitle title="" />
-                {statusPage}
+            <div className={`${styles.page3}`} >
+                <div className={styles["success"]}>
+                    <RejectedBlock />
+                </div>
             </div>
         )
     }

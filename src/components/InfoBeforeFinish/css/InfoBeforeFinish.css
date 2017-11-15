@@ -4,15 +4,21 @@
   overflow: visible;
   min-height: 0;
 }
+
 .dpOperationBody .dpOperationPartnerInfo {
   padding: 13px 20px 5px;
 }
+
 .dpOperationBody .dpOperationPartnerInfo .dpOperationPartnerMoreInfo.open p {
   color: #262626;
   font-family: 'whitney-light';
   padding: 15px 0 0 0;
 }
+
 .dpOperationBody .dpOperationPartnerInfo .dpOperationPartnerMoreInfo.open p span {
   color: #000000;
   font-family: 'whitney-book';
 }
+ 
+
+ /*# sourceMappingURL= InfoBeforeFinish.css.map */
